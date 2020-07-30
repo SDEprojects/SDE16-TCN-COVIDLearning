@@ -47,10 +47,10 @@ public class Recipe {
             }
             count++;
         }
-        setMatch(isRecipeMatch(getPlayerMix(),cd));
+        setMatch(isRecipeMatch(getPlayerMix()));
     }
 
-    public boolean isRecipeMatch(List<Color> formula, Countdown cd){
+    public boolean isRecipeMatch(List<Color> formula){
         boolean result = false;
         for(int i = 0; i < colorMix.size(); i++) {
             if (!formula.get(i).equals(getColorMix().get(i))) {

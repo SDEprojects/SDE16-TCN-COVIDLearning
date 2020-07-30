@@ -42,7 +42,8 @@ public class RoomsTest {
     public void getItemPositive() {
         movementEngine.setCurrentRoom("STAIRS");
         String item = room.getItem(p1.getInventory(), movementEngine.getCurrentRoom(), cd);
-        assertEquals("Box", item);
+        String expectedReturn = "The Box\u001B[0m was added to your inventory\nYou now have 1 items in your inventory:";
+        assertEquals(expectedReturn, item);
         assertEquals(1, p1.getInventory().getPlyrInv().size());
     }
     @Test
@@ -56,7 +57,8 @@ public class RoomsTest {
         movementEngine.setCurrentRoom("STAIRS");
         room.getItem(p1.getInventory(), movementEngine.getCurrentRoom(), cd);
         String item = room.getItem(p1.getInventory(), movementEngine.getCurrentRoom(), cd);
-        assertEquals("Box", item);
+        String expectedReturn = "You already took the Box";
+        assertEquals(expectedReturn, item);
         assertEquals(1, p1.getInventory().getPlyrInv().size());
     }
 }

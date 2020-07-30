@@ -12,7 +12,8 @@ public class JayTest {
     public void processQuestionAnswerPositiveC() throws IOException, InterruptedException {
         String input = "C";
         Jay jay = new Jay();
-        assertEquals("Red Liquid", jay.processQuestionAnswer(input));
+        String expectedString = "\u001B[31m" + "Red Liquid" + "\u001B[36m";
+        assertEquals(expectedString, jay.processQuestionAnswer(input));
     }
 
     // You will have to comment out the askTheQuestionAndCollectInput() method inside Jay for these tests to pass.
@@ -70,7 +71,8 @@ public class JayTest {
     @Test
     public void getItemPositive() {
         Jay jay = new Jay();
-        assertEquals("Red Liquid", jay.getItem());
+        String expectedString = "\u001B[31m" + "Red Liquid" + "\u001B[36m";
+        assertEquals(expectedString, jay.getItem());
     }
 
     @Test
