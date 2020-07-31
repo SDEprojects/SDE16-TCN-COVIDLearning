@@ -1,0 +1,7 @@
+advance
+go
+move
+run
+walk
+enter
+flee
