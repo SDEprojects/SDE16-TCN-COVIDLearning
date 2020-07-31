@@ -75,6 +75,16 @@ public class Parser {
         return command.toLowerCase().split("\\s+", 2);
     }
 
+    public ArrayList<String> getSearchSynonyms() {
+        return searchSynonyms;
+    }
 
+    public ArrayList<String> getMoveSynonyms() {
+        return moveSynonyms;
+    }
+
+    public ArrayList<String> getUseSynonyms() {
+        return useSynonyms;
+    }
 
 }
