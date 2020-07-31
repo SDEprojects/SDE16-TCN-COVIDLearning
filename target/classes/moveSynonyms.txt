@@ -5,3 +5,10 @@ run
 walk
 enter
 flee
+travel
+skedaddle
+scoot
+fly
+mosey
+lurch
+

@@ -1,0 +1,7 @@
+take
+grab
+acquire
+get
+add
+pick
+select

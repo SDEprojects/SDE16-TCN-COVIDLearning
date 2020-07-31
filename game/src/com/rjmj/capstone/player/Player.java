@@ -1,5 +1,6 @@
 package com.rjmj.capstone.player;
 
+import com.rjmj.capstone.engine.Parser;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.room.Rooms;
 import com.rjmj.capstone.room.GameTextArt;
@@ -14,6 +15,7 @@ public class Player {
     private String playerName;
     private String playerActionSelection;
     private String playInput;
+    private Parser parser;
     private Inventory inventory = new Inventory();
     private MovementEngine movementEngine = new MovementEngine();
     private Tutorial tutorial = new Tutorial();
@@ -49,6 +51,7 @@ public class Player {
     public void playGame(String input) throws IOException, InterruptedException {
         switch (input) {
             case "START":
+                parser = new Parser();
                 collectPlayerName();
                 backToMenu();
                 break;
@@ -115,6 +118,39 @@ public class Player {
         setPlayerActionSelection(userInput.nextLine().toUpperCase());
         return getPlayerActionSelection();
     }
+
+
+    // availableActions() will prompt the player with a list of actions they can choose, based on current room.
+    private void parseAvailableActions(String input) throws IOException, InterruptedException {
+        Rooms room = new Rooms();
+
+        if (input.equals("EXIT")) { play(); return; }
+
+        if (parser.isMoveSynonym(input))  {
+            setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
+        } else if (parser.isSearchSynonym(input)) {
+            setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
+        } else if (parser.isTalkSynonym(input)) {
+            setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
+        } else if (parser.isTakeSynonym(input)) {
+            movementEngine.clearScreen();
+            setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
+        } else if (input.equals("MIX")) {
+            movementEngine.clearScreen();
+            recipe.setPlayerMix(cd);
+            mixCheck = true;
+        } else if (input.equals("MAP")) {
+            movementEngine.clearScreen();
+            gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
+        } else {
+            movementEngine.clearScreen();
+            System.out.println("Error, please select a valid item.\n");
+        }
+
+        backToMenu();
+    }
+
+
 
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
     private void availableActions(String input) throws IOException, InterruptedException {
@@ -206,7 +242,7 @@ public class Player {
     }
 
     private void backToMenu() throws IOException, InterruptedException {
-        availableActions(collectPlayerActionInput());
+        parseAvailableActions(collectPlayerActionInput());
     }
 
 
