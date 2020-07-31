@@ -146,7 +146,7 @@ public class Player {
                 break;
             case "MAP":
                 movementEngine.clearScreen();
-                gameTextArt.mapDisplay();
+                gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
                 backToMenu();
                 break;
             case "EXIT":

@@ -223,45 +223,554 @@ public class GameTextArt {
                 "L/_____/--------\\\\_//W-------\\_____\\J");
     }
 
-    public void mapDisplay() {
-        System.out.println(ANSI_GREEN +
- ANSI_RESET + ANSI_BLUE +"+----------------------+" +ANSI_RESET + ANSI_RED + "             +--------------------+\n"+
- ANSI_RESET + ANSI_BLUE +"|                      |" +ANSI_RESET + ANSI_RED + "             |                    |\n"+
- ANSI_RESET + ANSI_BLUE +"|    Dining Room       |" +ANSI_RESET + ANSI_RED + "             |                    |\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_CYAN +"+-------------+" +ANSI_RESET + ANSI_RED + "                    |\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_CYAN +"|    Hall     |" +ANSI_RESET + ANSI_RED + "     Ball Room      |\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_CYAN +"+-------------+" +ANSI_RESET + ANSI_RED + "                    |\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_YELLOW +"|             |" +ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_YELLOW +"|             |" +ANSI_RESET + ANSI_RED + " " +ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n"+
- ANSI_RESET + ANSI_BLUE +"|                      "+ANSI_RESET + ANSI_YELLOW +"|             |" +ANSI_RESET + ANSI_RED + " " +ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n"+
- ANSI_RESET + ANSI_BLUE +"+----------------------+" +ANSI_RESET + ANSI_RED + "             +--------------------+" +ANSI_RESET + ANSI_PURPLE + "                                          |\n"+
- ANSI_RESET + ANSI_YELLOW +"                       |             | " +ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n"+
- ANSI_RESET + ANSI_YELLOW +"                       |             |  " +ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n"+
- ANSI_RESET + ANSI_YELLOW +"                       |             |  " +ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n"+
- ANSI_RESET + ANSI_BLACK +"     +-----------------+"+ ANSI_RESET + ANSI_YELLOW +"             |  " +ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n"+
- ANSI_RESET + ANSI_BLACK +"     |                 |"+ ANSI_RESET + ANSI_YELLOW +"   Kitchen   |  " +ANSI_RESET + ANSI_PURPLE + "                  |               "+ANSI_RESET + ANSI_WHITE +"|---|                      |\n"+
- ANSI_RESET + ANSI_BLACK +"     |   Bathroom      |"+ ANSI_RESET + ANSI_YELLOW +"             |  " +ANSI_RESET + ANSI_PURPLE + "                  |               "               +ANSI_RESET + ANSI_WHITE +"|---|"+ANSI_RESET + ANSI_PURPLE + "                      |\n"+
- ANSI_RESET + ANSI_BLACK +"     +-----------------+"+ ANSI_RESET + ANSI_YELLOW +"-------------+  " +ANSI_RESET + ANSI_PURPLE + "                  +---------------"+ANSI_RESET + ANSI_WHITE +"|---|"+ANSI_RESET + ANSI_PURPLE +"----------------------+\n"+
- ANSI_RESET + ANSI_BLUE +"                                 +----------------+"+ANSI_RESET + ANSI_WHITE +"                       |---|\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                |"+ANSI_RESET + ANSI_WHITE +"                       |---|\n" +
- ANSI_RESET + ANSI_BLUE +"                                 |                |"+ANSI_RESET + ANSI_WHITE +"                       |---|\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                |"+ANSI_RESET + ANSI_WHITE +"                       |---|\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |     Bedroom    "+ANSI_RESET + ANSI_CYAN +"+-----------------------+   |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                "+ANSI_RESET + ANSI_CYAN +"|           Down Stairs     |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                "+ANSI_RESET + ANSI_CYAN +"|              Hall         |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                "+ANSI_RESET + ANSI_CYAN +"+---------------------------+\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 |                |\n"+
- ANSI_RESET + ANSI_BLUE +"                                 +--+-----------+-+\n"+
- ANSI_RESET + ANSI_RED +"                                    |           |\n"+
- ANSI_RESET + ANSI_PURPLE +"                        +-----------+"+ ANSI_RESET + ANSI_RED +"  Library  "+ ANSI_RESET + ANSI_YELLOW +"+----------+\n"+
- ANSI_RESET + ANSI_PURPLE +"                        |           |           " + ANSI_RESET + ANSI_YELLOW +          "|          |\n"+
- ANSI_RESET + ANSI_PURPLE +"                        |  Cave     "+ ANSI_RESET + ANSI_RED +"+-----------+" + ANSI_RESET + ANSI_YELLOW +         "   Lab    |\n"+
- ANSI_RESET + ANSI_PURPLE +"                        |           |           " + ANSI_RESET + ANSI_YELLOW +          "|          |\n"+
- ANSI_RESET + ANSI_PURPLE +"                        |           |           " + ANSI_RESET + ANSI_YELLOW +          "|          |\n"+
- ANSI_RESET + ANSI_PURPLE +"                        +-----------+           " + ANSI_RESET + ANSI_YELLOW +          "+----------+\n"+
-"                                                                                                                                             \n" + ANSI_RESET);
+    public void mapDisplay(String location) {
+
+        switch(location) {
+
+            case "DINING ROOM":
+
+            System.out.println(ANSI_GREEN +
+                    ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|      << X >>         " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                    ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                    ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                    ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                    ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                    ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                    ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                    ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                    ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                    ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                    ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                    ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                    ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                    "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+            case "HALL":
+                System.out.println("HALL");
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|  Hall <<X>> |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+                break;
+            case "BALL ROOM":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|     Hall    |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + "      << X >> " + ANSI_RESET + ANSI_PURPLE + "      |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+                break;
+            case "MOVIE ROOM":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |              << X >>                     |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+            case "STAIRS":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |<X>|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+            case "DOWN STAIRS HALL":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|      Down Stairs HALL     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|          << X >>          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            case "BEDROOM":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     << X >>    " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            case "LIBRARY":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |  << X >>  |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            case "LAB":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "| << X >>  |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+                break;
+
+            case "KITCHEN":
+
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |   << X >>   | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            case "CAVE":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |   Cave    " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  << X >>  |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            case "BATHROOM":
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |     << X >>     |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |    Bathroom     |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |   Cave    " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+            default:
+                System.out.println(ANSI_GREEN +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|    Dining Room       |" + ANSI_RESET + ANSI_RED + "             |                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "|    Hall     |" + ANSI_RESET + ANSI_RED + "     Ball Room      |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_CYAN + "+-------------+" + ANSI_RESET + ANSI_RED + "                    |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_PURPLE + "                    +------------------------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "|                      " + ANSI_RESET + ANSI_YELLOW + "|             |" + ANSI_RESET + ANSI_RED + " " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_BLUE + "+----------------------+" + ANSI_RESET + ANSI_RED + "             +--------------------+" + ANSI_RESET + ANSI_PURPLE + "                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             | " + ANSI_RESET + ANSI_PURPLE + "                   |                                          |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |             Movie Room                   |\n" +
+                        ANSI_RESET + ANSI_YELLOW + "                       |             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |                                          |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |                 |" + ANSI_RESET + ANSI_YELLOW + "   Kitchen   |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     |   Bathroom      |" + ANSI_RESET + ANSI_YELLOW + "             |  " + ANSI_RESET + ANSI_PURPLE + "                  |               " + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "                      |\n" +
+                        ANSI_RESET + ANSI_BLACK + "     +-----------------+" + ANSI_RESET + ANSI_YELLOW + "-------------+  " + ANSI_RESET + ANSI_PURPLE + "                  +---------------" + ANSI_RESET + ANSI_WHITE + "|---|" + ANSI_RESET + ANSI_PURPLE + "----------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +----------------+" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |" + ANSI_RESET + ANSI_WHITE + "                       |---|\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |     Bedroom    " + ANSI_RESET + ANSI_CYAN + "+-----------------------+   |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|           Down Stairs     |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "|              Hall         |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                " + ANSI_RESET + ANSI_CYAN + "+---------------------------+\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 |                |\n" +
+                        ANSI_RESET + ANSI_BLUE + "                                 +--+-----------+-+\n" +
+                        ANSI_RESET + ANSI_RED + "                                    |           |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+" + ANSI_RESET + ANSI_RED + "  Library  " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |  Cave     " + ANSI_RESET + ANSI_RED + "+-----------+" + ANSI_RESET + ANSI_YELLOW + "   Lab    |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        |           |           " + ANSI_RESET + ANSI_YELLOW + "|          |\n" +
+                        ANSI_RESET + ANSI_PURPLE + "                        +-----------+           " + ANSI_RESET + ANSI_YELLOW + "+----------+\n" +
+                        "                                                                                                                                             \n" + ANSI_RESET);
+
+                break;
+
+
+        }
+        System.out.println("You are in "+ location);
         Scanner scanner = new Scanner(System.in);
         System.out.println(ANSI_CYAN + "Type back to return." + ANSI_RESET);
         scanner.next();
