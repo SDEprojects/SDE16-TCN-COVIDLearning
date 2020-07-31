@@ -13,54 +13,16 @@ public class UserInput {
         String userChoice = sc.nextLine().toLowerCase().trim();
         return userChoice;
     }
+
+
+    //this pardner prompts the player for precepts (lol... it gets commands)
+    public String[] getUserCommand(String question) {
+        String command = getInput(question);
+        return command.toLowerCase().split("\\s+", 2);
+    }
+
+
+
 }
 
-//    public static void main(String[] args) {
-//
-//        try {
-//            System.out.print("Enter the file name with extension : ");
-//
-//            Scanner input = new Scanner(System.in);
-//
-//            File file = new File(input.nextLine());
-//
-//            input = new Scanner(file);
-//
-//
-//            while (input.hasNextLine()) {
-//                String line = input.nextLine();
-//                System.out.println(line);
-//            }
-//            input.close();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//
-//}
-//import java.io.File;
-//        import java.io.FileNotFoundException;
-//        import java.util.Scanner;
-//
-//public class insertionSort {
-//
-//    public static void main(String[] args) {
-//
-//        File file = new File("10_Random");
-//
-//        try {
-//
-//            Scanner sc = new Scanner(file);
-//
-//            while (sc.hasNextLine()) {
-//                int i = sc.nextInt();
-//                System.out.println(i);
-//            }
-//            sc.close();
-//        }
-//        catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//}
+
