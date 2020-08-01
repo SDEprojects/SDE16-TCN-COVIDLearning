@@ -5,6 +5,7 @@ import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.room.Rooms;
 import com.rjmj.capstone.room.GameTextArt;
 import com.rjmj.capstone.timer.Countdown;
+import com.rjmj.capstone.timer.GameTimer;
 import com.rjmj.capstone.tutorial.Tutorial;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class Player {
     private MovementEngine movementEngine = new MovementEngine();
     private Tutorial tutorial = new Tutorial();
     private Countdown cd = new Countdown();
+    private GameTimer gameTimer = new GameTimer(); //CB added timer to the game
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_PURPLE = "\u001B[35m";

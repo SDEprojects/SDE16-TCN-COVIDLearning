@@ -82,11 +82,14 @@ public class GameTextArt {
     public void introText() throws InterruptedException {
         String[] infoText = {
                 ANSI_BLUE,
-                "Welcome to the Apprenticeship!  Your journey has been hard, but I will help you",
-                "You have been intentionally injected with CoVID.  Luckily the vaccine ingredients",
-                "are located in this Mansion.  If you fail to properly mix and administer the vaccine",
-                "within 10 minutes you will die.",
-                "To move around, you simply will type 'Up' 'Back' 'Left' and 'Right' as applicable.",
+                "Congratulations on your success!! You are celebrating your graduation to OJT with your instructors and friends.",
+                "But mind you there's a stranger in the party who could ruin your dreams.",
+                "Be careful when you drink or eat anything in the party, it could be your last day",
+                "You could get injected with COVID Virus. Enjoy but be wary",
+                "If you are coughing, having shortness of breath or fever don't endanger your life rush to find the vaccine located in this Mansion. ",
+                "If you fail to properly mix and administer the vaccine",
+                "You will not see tomorrow because you will die in 10 minutes.",
+                "To move around, you need to type 'Up' 'Back' 'Left' and 'Right' as applicable.",
                 ANSI_RESET
         };
 
