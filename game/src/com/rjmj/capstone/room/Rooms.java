@@ -24,7 +24,9 @@ public class Rooms {
                     "room", "Hall",
                     "right", "Ball Room",
                     "left", "Dining Room",
-                    "down", "Kitchen")),
+                    "down", "Kitchen",
+                    "artwork", "Creepy Painting",
+                    "noise", "creaking floorboard")),
             entry("BALL ROOM", Map.of(
                     "room", "Ball Room",
                     "character", "John",
