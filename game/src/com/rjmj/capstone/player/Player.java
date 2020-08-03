@@ -125,23 +125,27 @@ public class Player {
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
     private void parseAvailableActions(String input) throws IOException, InterruptedException {
         Rooms room = new Rooms();
+        String[] commandArray = input.toLowerCase().split("\\s+", 2);
+        String command = commandArray[0];
+        String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
-        if (input.equals("EXIT")) { play(); return; }
+        if (command.equals("EXIT")) { play(); return; }
 
-        if (parser.isMoveSynonym(input))  {
-            setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
-        } else if (parser.isSearchSynonym(input)) {
+        if (parser.isMoveSynonym(command))  {
+            setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));
+            // OLD VERSION - setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
+        } else if (parser.isSearchSynonym(command)) {
             setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
-        } else if (parser.isTalkSynonym(input)) {
+        } else if (parser.isTalkSynonym(command)) {
             setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
-        } else if (parser.isTakeSynonym(input)) {
+        } else if (parser.isTakeSynonym(command)) {
             movementEngine.clearScreen();
             setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
-        } else if (input.equals("MIX")) {
+        } else if (command.equals("mix")) {
             movementEngine.clearScreen();
             recipe.setPlayerMix(cd);
             mixCheck = true;
-        } else if (input.equals("MAP")) {
+        } else if (command.equals("map")) {
             movementEngine.clearScreen();
             gameTextArt.mapDisplay();
         } else {

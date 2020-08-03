@@ -64,7 +64,7 @@ public class Parser {
         try {
             while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());
         } finally {
-            System.out.println("Search array populated!");
+
         }
     }
 
@@ -72,7 +72,6 @@ public class Parser {
         try {
             while (moveReader.ready()) moveSynonyms.add(moveReader.readLine());
         } finally {
-            System.out.println("Move array populated!");
         }
     }
 
@@ -80,7 +79,7 @@ public class Parser {
         try {
             while (useReader.ready()) useSynonyms.add(useReader.readLine());
         } finally {
-            System.out.println("Use array populated!");
+
         }
     }
 
@@ -88,7 +87,6 @@ public class Parser {
         try {
             while (takeReader.ready()) takeSynonyms.add(takeReader.readLine());
         } finally {
-            System.out.println("Take array populated!");
         }
     }
 
@@ -96,7 +94,7 @@ public class Parser {
         try {
             while (talkReader.ready()) talkSynonyms.add(talkReader.readLine());
         } finally {
-            System.out.println("Talk array populated!");
+
         }
     }
 
