@@ -2,8 +2,7 @@ package com.rjmj.capstone.player;
 
 import com.rjmj.capstone.engine.Parser;
 import com.rjmj.capstone.engines.MovementEngine;
-import com.rjmj.capstone.room.Rooms;
-import com.rjmj.capstone.room.GameTextArt;
+import com.rjmj.capstone.room.*;
 import com.rjmj.capstone.timer.Countdown;
 import com.rjmj.capstone.timer.GameTimer;
 import com.rjmj.capstone.tutorial.Tutorial;
@@ -39,7 +38,7 @@ public class Player {
     private String takeItemMsg = "";
     private String moveMsg = "";
     private boolean mixCheck = false;
-
+    private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
 
 
     public String play() {
@@ -88,9 +87,9 @@ public class Player {
         cd.resetTimerNewGame();
     }
 
-    public String collectPlayerActionInput() throws IOException, InterruptedException {
-        Scanner userInput = new Scanner(System.in);
-        currentLocationDisplay();
+    public String collectPlayerActionInput(String userInput) throws IOException, InterruptedException {
+        //Scanner userInput = new Scanner(System.in);
+        //currentLocationDisplay();
         if(getMoveMsg().length() > 20){
             System.out.println(getMoveMsg());
             setMoveMsg("");
@@ -117,7 +116,8 @@ public class Player {
         } else {
             System.out.println(ANSI_CYAN + "You can do the following actions:" +ANSI_RESET + ANSI_GREEN + "Look Around, " +ANSI_RESET + ANSI_PURPLE + "Talk, " +ANSI_RESET + ANSI_BLUE + "Take Item, " +ANSI_RESET + ANSI_YELLOW + "Move, " +ANSI_RESET + ANSI_WHITE + "Map, " +ANSI_RESET + ANSI_RED + "Exit" +ANSI_RESET);
         }
-        setPlayerActionSelection(userInput.nextLine().toUpperCase());
+        //setPlayerActionSelection(userInput.nextLine().toUpperCase());
+        setPlayerActionSelection(userInput.toUpperCase());
         return getPlayerActionSelection();
     }
 
@@ -248,7 +248,52 @@ public class Player {
     }
 
     private void backToMenu() throws IOException, InterruptedException {
-        parseAvailableActions(collectPlayerActionInput());
+
+        Scanner scanner = new Scanner(System.in);
+
+        String currentRoom = movementEngine.getCurrentRoom();
+        StoryRoom storyRoom = null;
+        String action = null;
+        switch (currentRoom){
+            case "DINING ROOM":
+                if (instancesStoryRoom[0] == null){
+                    storyRoom = new StoryDiningRoom();
+                    instancesStoryRoom[0] = storyRoom;
+                }
+                else{
+                    storyRoom = instancesStoryRoom[0];
+                }
+                break;
+
+            case "HALL":
+                if (instancesStoryRoom[1] == null){
+                    storyRoom = new StoryHall();
+                    instancesStoryRoom[1] = storyRoom;
+                }
+                else{
+                    storyRoom = instancesStoryRoom[1];
+                }
+                break;
+
+            case "KITCHEN":
+                if (instancesStoryRoom[2] == null){
+                    storyRoom = new StoryKitchen();
+                    instancesStoryRoom[2] = storyRoom;
+                }
+                else{
+                    storyRoom = instancesStoryRoom[2];
+                }
+                break;
+
+            default:
+                /** Temporary **/
+                storyRoom = new StoryDefault();
+        }
+
+        storyRoom.enter(scanner);
+        action = storyRoom.getNextAction();
+        System.out.println("Action : "+ action);
+        parseAvailableActions(collectPlayerActionInput(action));
     }
 
 
