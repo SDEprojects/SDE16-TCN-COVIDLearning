@@ -8,5 +8,4 @@ hunt
 pursue
 research
 rummage
-pursue
 peruse

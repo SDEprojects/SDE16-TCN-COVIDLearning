@@ -1,5 +1,6 @@
 chat
 talk
+speak
 converse
 discuss
 mingle
