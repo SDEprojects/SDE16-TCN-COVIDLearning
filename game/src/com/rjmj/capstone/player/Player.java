@@ -147,7 +147,7 @@ public class Player {
             mixCheck = true;
         } else if (command.equals("map")) {
             movementEngine.clearScreen();
-            gameTextArt.mapDisplay();
+            gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
         } else {
             movementEngine.clearScreen();
             System.out.println("Error, please select a valid item.\n");
@@ -188,7 +188,7 @@ public class Player {
                 break;
             case "MAP":
                 movementEngine.clearScreen();
-                gameTextArt.mapDisplay();
+                gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
                 backToMenu();
                 break;
             case "EXIT":
