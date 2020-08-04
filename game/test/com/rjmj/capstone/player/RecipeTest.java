@@ -23,27 +23,27 @@ public class RecipeTest {
 
     @Test
     public void isRecipeMatchPositive() {
-        recipe.colorMix.add(Color.GREEN);
-        recipe.colorMix.add(Color.RED);
-        recipe.colorMix.add(Color.BLUE);
+        Recipe.colorMix.add(Color.GREEN);
+        Recipe.colorMix.add(Color.RED);
+        Recipe.colorMix.add(Color.BLUE);
         boolean actual = recipe.isRecipeMatch(playerMix);
         assertEquals(true,actual);
     }
 
     @Test
     public void isRecipeMatchNegative() {
-        recipe.colorMix.add(Color.GREEN);
-        recipe.colorMix.add(Color.RED);
-        recipe.colorMix.add(Color.RED);
+        Recipe.colorMix.add(Color.GREEN);
+        Recipe.colorMix.add(Color.RED);
+        Recipe.colorMix.add(Color.RED);
         //boolean actual = recipe.isRecipeMatch(playerMix,cd);
         assertNotEquals(true,false);
     }
     @Test
     public void mixRandomRecipeContainsOneOfEachColorPositive() {
         recipe.mixRandomRecipe();
-        assertEquals(6,recipe.getColorMix().size());
-        assertTrue(recipe.getColorMix().contains(Color.RED));
-        assertTrue(recipe.getColorMix().contains(Color.BLUE));
-        assertTrue(recipe.getColorMix().contains(Color.GREEN));
+        assertEquals(6, Recipe.getColorMix().size());
+        assertTrue(Recipe.getColorMix().contains(Color.RED));
+        assertTrue(Recipe.getColorMix().contains(Color.BLUE));
+        assertTrue(Recipe.getColorMix().contains(Color.GREEN));
     }
 }
