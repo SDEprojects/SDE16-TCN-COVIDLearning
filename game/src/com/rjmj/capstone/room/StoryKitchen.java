@@ -122,7 +122,7 @@ public class StoryKitchen implements StoryRoom{
 
     private void openCupBoard_B(){
         System.out.println("\n\nYou see a bag of bread.");
-        System.out.println("Would you like to keep it?");
+        System.out.println("\nWould you like to keep it?");
         System.out.println("- Type \"Yes\"");
         System.out.println("- Type \"No\"");
         String choice = scanner.nextLine();
