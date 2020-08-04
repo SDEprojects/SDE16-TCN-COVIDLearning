@@ -123,7 +123,7 @@ public class Player {
 
 
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
-    private void parseAvailableActions(String input) throws IOException, InterruptedException {
+    public void parseAvailableActions(String input) throws IOException, InterruptedException {
         Rooms room = new Rooms();
         String[] commandArray = input.toLowerCase().split("\\s+", 2);
         String command = commandArray[0];

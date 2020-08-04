@@ -8,10 +8,11 @@ public class StoryHall implements StoryRoom{
     private String nextAction;
 
     @Override
-    public void enter(Scanner scanner) {
+    public void enter(Scanner scanner) throws InterruptedException {
         this.scanner = scanner;
-        System.out.println("You are in HALL now");
-        System.out.println("What would you like to do");
+        //System.out.println("You are in HALL now");
+        introText();
+        System.out.println("What now?");
         freeAns();
     }
 
@@ -30,5 +31,35 @@ public class StoryHall implements StoryRoom{
     @Override
     public String getNextAction() {
         return nextAction;
+    }
+
+    public void introText() throws InterruptedException {
+        String[] infoText = {
+                "\u001B[34m",
+                "You enter a long dark corridor. There is a light at the end that flickers like a fading pulse.",
+                "On the walls you see 19th century oil paintings. Their faces are familiar to you somehow.\n",
+                "The floorboard groans beneath your tiptoeing feet",
+                "Invisible cobwebs break across your face.\n",
+                "The infection continues to spread throughout your body",
+                "You find it difficult to breathe, your body weakens under the viral invasion",
+                "Sweat beads out of your pores",
+                "The infection tightens around your neck like a noose\n",
+                "You grow dizzy and faint. Did the paintings just rotate?\n",
+                "THUM, THUM, THUM, noises fill your ears. Are these real noises or are you hallucinating?",
+                "THUMP!",
+                "You fall to the floor, exhausted, struggling to catch your breath.\n",
+                "While on the ground, a rat scampers over your hand. A roach begins crawling on your back, checking to see if you\'re lunch.",
+                "Your vision blurs, you feel nothing and yet everything at once.\n\n",
+                "Time",
+                "Is",
+                "Running",
+                "Out . . . . .",
+                "\u001B[0m"
+        };
+
+        for (String messages : infoText) {
+            Thread.sleep(1450);
+            System.out.println(messages);
+        }
     }
 }
