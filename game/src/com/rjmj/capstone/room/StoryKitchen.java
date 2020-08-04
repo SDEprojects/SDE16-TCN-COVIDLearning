@@ -32,7 +32,7 @@ public class StoryKitchen implements StoryRoom{
     private void StoryIntro(){
         System.out.println("You just opened the door of the kitchen.");
         System.out.println("The light was on. You see a sink next to the door and a gas stove in the middle of the kitchen. ");
-        System.out.println("It was chilly inside. On the floor, counter, you do not find any dust, food or water stains.");
+        System.out.println("It was chilly inside. On the counter and the floor, you do not see any dust, food or water stains.");
         System.out.println("You stepped into the Kitchen.");
         System.out.println("The light was suddenly off.");
         System.out.println("You see a flame coming up from the stove.");
@@ -40,7 +40,7 @@ public class StoryKitchen implements StoryRoom{
         System.out.println("You turned around and tried to open the door, but you could not. You ran to the other door, it was also locked.");
         System.out.println("You just realized that you were locked out.");
         System.out.println();
-        System.out.println("You see 3 cupboards mounted on the wall, a kettle, a toaster, and a coffee machine.");
+        System.out.println("You see 3 cupboards mounted on the wall, a kettle, a toaster, and a coffee machine on the counter.");
         askQuestionStoryIntro();
     }
 
@@ -74,8 +74,8 @@ public class StoryKitchen implements StoryRoom{
             askQuestionStoryIntro();
         }
         else if(choice.equalsIgnoreCase("X")){
-            System.out.println("You heard the click sound behind you.");
-            System.out.println("This time you where able to open the door where you were coming from.");
+            System.out.println("You heard the door unlocked.");
+            System.out.println("This time you where able to open the door where you came.");
             System.out.println("You decided to go back.");
             setNextAction("move up");
         }
@@ -162,8 +162,8 @@ public class StoryKitchen implements StoryRoom{
                 System.out.println("\nYou found a memo inside of the bag.");
                 System.out.println("\n   WELCOME TO THE KITCHEN.");
                 System.out.println("   IF YOU ARE READING THIS MEMO, YOU ARE LUCKY.");
-                System.out.println("   I CAN TELL YOU HOW TO DESTROY THE SPELL OF THIS ROOM.");
-                System.out.println("   YOU NEED TO SWITCH ON KETTLE FIRST, THEN TOAST A PIECE OF BREAD YOU FIND IN THE CUPBOARD.");
+                System.out.println("   I CAN TELL YOU HOW TO BREAK THE SPELL OF THIS ROOM.");
+                System.out.println("   YOU NEED TO SWITCH ON THE KETTLE FIRST, THEN TOAST A PIECE OF BREAD YOU FIND IN THE CUPBOARD.");
                 System.out.println("\nYou keep the memo and put the coffee bag in the cupboard.");
             }
             inFrontOfCupboard();
@@ -216,7 +216,7 @@ public class StoryKitchen implements StoryRoom{
         }
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("Toast bread")){
-            System.out.println("\n\nSuddenly, the flame on the stove was gone. Light was back on, and you heard the noise of unlocking the doors.");
+            System.out.println("\n\nSuddenly, the flame on the stove was gone. Light was back on, and you heard the noise of somebody unlocking the doors.");
             localItems.add("CLEAR");
             freeAns();
         }
