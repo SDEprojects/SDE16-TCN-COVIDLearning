@@ -10,7 +10,6 @@ public class StoryDefault implements StoryRoom{
     @Override
     public void enter(Scanner scanner) {
         this.scanner = scanner;
-        System.out.println("You are in DEFAULT ROOM now");
         System.out.println("What would you like to do");
         freeAns();
     }
