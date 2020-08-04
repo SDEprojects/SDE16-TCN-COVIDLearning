@@ -9,6 +9,8 @@ public interface Color {
     String ANSI_RED = "\u001B[31m";
     String ANSI_BLUE = "\u001B[34m";
 
+
+    //////////////////// FOR RESOURCE BUNDLE //////////////////////
     /**
      * Coloring the fonts
      * {0}:ANSI_CYAN, {1}:ANSI_RED, {2}:ANSI_BLUE, {3}:ANSI_RESET
