@@ -10,8 +10,8 @@ public class StoryHall implements StoryRoom{
     @Override
     public void enter(Scanner scanner) throws InterruptedException {
         this.scanner = scanner;
-        //System.out.println("You are in HALL now");
-        introText();
+        System.out.println("You are in HALL now");
+        //introText();
         System.out.println("What now?");
         freeAns();
     }
