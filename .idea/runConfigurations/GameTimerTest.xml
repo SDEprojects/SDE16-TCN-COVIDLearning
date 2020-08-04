@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="GameTimerTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" singleton="false">
+    <module name="TLGCapstone-COVID-Learning" />
+    <useClassPathOnly />
+    <extension name="coverage" sample_coverage="false" track_test_folders="true" />
+    <option name="MAIN_CLASS_NAME" value="" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <option name="PARAMETERS" value="" />
+    <fork_mode value="method" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="MakeProject" enabled="true" />
+    </method>
+  </configuration>
+</component>

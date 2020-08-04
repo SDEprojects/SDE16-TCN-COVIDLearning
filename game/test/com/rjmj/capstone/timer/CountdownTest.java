@@ -40,6 +40,7 @@ public class CountdownTest {
         assertEquals(598000, timeFrozen);
     }
 
+
     @Test
     public void displayTimeInsideArtPositive() {
         cd.setTimeLeft(66000);
@@ -53,4 +54,6 @@ public class CountdownTest {
         assertEquals("00:01", cd.convertTimeLeftToMmSs(1000));
         assertEquals("00:00", cd.convertTimeLeftToMmSs(500));
     }
+
 }
+
