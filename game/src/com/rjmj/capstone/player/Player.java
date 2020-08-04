@@ -130,21 +130,28 @@ public class Player {
         String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
         if (command.equals("EXIT")) { play(); return; }
-
+        // MOVE
         if (parser.isMoveSynonym(command))  {
             setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));
             // OLD VERSION - setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
+        // LOOK AROUND
         } else if (parser.isSearchSynonym(command)) {
             setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
+            System.out.println(getLookAroundMsg());
+        // TALK
         } else if (parser.isTalkSynonym(command)) {
             setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
+        // TAKE ITEM
         } else if (parser.isTakeSynonym(command)) {
             movementEngine.clearScreen();
-            setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
+            setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));
+            System.out.println(getTakeItemMsg());
+        // MIX
         } else if (command.equals("mix")) {
             movementEngine.clearScreen();
             recipe.setPlayerMix(cd);
             mixCheck = true;
+        // MAP
         } else if (command.equals("map")) {
             movementEngine.clearScreen();
             gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
