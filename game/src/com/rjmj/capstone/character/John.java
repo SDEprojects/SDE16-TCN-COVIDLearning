@@ -2,33 +2,27 @@ package com.rjmj.capstone.character;
 
 import com.rjmj.capstone.engines.MovementEngine;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class John implements Character, Color {
+public class John implements Character {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "QuizJohn";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
+    /// Temporary -> Specifying the quiz base ///
+    String QuizBaseKey = "Quiz1";
+
     private String questionAnswer;
 
     @Override
     public String askTheQuestionAndCollectInput() {
-        String[] johnInput = {
-                ANSI_CYAN,
-                "John: \"What is AWS' DNS Service?\"",
-                "A. S3",
-                "B. EC2",
-                "C. Route 53",
-                "D. Lambda",
-                ANSI_RESET
-        };
 
-        try {
-            for (String john : johnInput) {
-                Thread.sleep(SLEEP_DURATION_MS);
-                System.out.println(john);
-            }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
-        }
+        readStoryLinesOutOfFile(QuizBaseKey, SLEEP_DURATION_MS);
 
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
@@ -37,16 +31,25 @@ public class John implements Character, Color {
 
     @Override
     public String processQuestionAnswer(String questionAnswer) {
-        MovementEngine movementEngine = new MovementEngine();
         String result = "";
-        if (questionAnswer.toUpperCase().equals("C")) {
-            movementEngine.clearScreen();
-            System.out.println("Correct");
-            result = getItem();
-        } else {
-            movementEngine.clearScreen();
-            System.out.println("Incorrect, please try again.");
+
+        String ansKey = QuizBaseKey + "_answer";
+        String answer = null;
+        try{
+            answer = bundle.getString(ansKey);
+            if (questionAnswer.equalsIgnoreCase(answer)){
+                System.out.println("Correct");
+                result = getItem();
+            }
+            else{
+                System.out.println("Incorrect, please try again.");
+            }
         }
+        catch(MissingResourceException e){
+            somethingWentWrong(e);
+            System.out.println("Could not find a key : " + ansKey);
+        }
+
         return result;
     }
 
@@ -60,5 +63,21 @@ public class John implements Character, Color {
 
     public String getItem() {
         return "Key";
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            } catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+        }
     }
 }
