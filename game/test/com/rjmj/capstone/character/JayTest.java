@@ -16,10 +16,10 @@ public class JayTest {
         jay = new Jay();
     }
 
-    @Test
-    public void testLoadQuiz(){
-        jay.askTheQuestionAndCollectInput();
-    }
+    //@Test
+    //public void testLoadQuiz(){
+    //    jay.askTheQuestionAndCollectInput();
+    //}
 
 //    @Test
 //    public void processQuestionAnswerPositiveC() throws IOException, InterruptedException {
