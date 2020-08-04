@@ -3,11 +3,11 @@ package com.rjmj.capstone.character;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Jay implements Character {
+public class Jay implements Character, Color {
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws IOException, InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] jayInput = {
                 ANSI_CYAN,
                 "Jay: \"What band is Jay playing in this video?\"",
@@ -18,12 +18,24 @@ public class Jay implements Character {
                 ANSI_RESET
         };
 
-        String url_open = "https://www.youtube.com/watch?v=hyctW2abkY4";
-        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
+        try {
+            String url_open = "https://www.youtube.com/watch?v=hyctW2abkY4";
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open)\"");
+        }
 
-        for (String jay : jayInput) {
-            Thread.sleep(sleep);
-            System.out.println(jay);
+        try {
+            for (String jay : jayInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(jay);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);

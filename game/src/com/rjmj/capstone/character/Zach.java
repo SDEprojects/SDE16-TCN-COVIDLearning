@@ -2,11 +2,11 @@ package com.rjmj.capstone.character;
 
 import java.util.Scanner;
 
-public class Zach implements Character{
+public class Zach implements Character, Color{
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] zachInput = {
                 ANSI_CYAN,
                 "Zach: \"What did the crew name the Dragon DEMO 2 capsule?\"",
@@ -16,10 +16,15 @@ public class Zach implements Character{
                 "D. Enterprise",
                 ANSI_RESET
         };
-
-        for (String zach : zachInput) {
-            Thread.sleep(sleep);
-            System.out.println(zach);
+        try {
+            for (String zach : zachInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(zach);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);

@@ -4,11 +4,11 @@ import com.rjmj.capstone.engines.MovementEngine;
 
 import java.util.Scanner;
 
-public class John implements Character {
+public class John implements Character, Color {
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] johnInput = {
                 ANSI_CYAN,
                 "John: \"What is AWS' DNS Service?\"",
@@ -19,9 +19,15 @@ public class John implements Character {
                 ANSI_RESET
         };
 
-        for (String john : johnInput) {
-            Thread.sleep(sleep);
-            System.out.println(john);
+        try {
+            for (String john : johnInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(john);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);
