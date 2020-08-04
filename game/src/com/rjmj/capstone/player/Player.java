@@ -41,12 +41,15 @@ public class Player {
     private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
 
 
-    public String play() {
+    //public String play() {
+    public void play() throws IOException, InterruptedException {
         Scanner userInput = new Scanner(System.in);
         gameTextArt.introArt();
         gameTextArt.introTextDelayed();
-        setPlayInput(userInput.next().toUpperCase().trim());
-        return getPlayInput();
+        String userChoice = userInput.next().toUpperCase().trim();
+        //setPlayInput(userChoice);
+        //return getPlayInput();
+        playGame(userChoice); // test
     }
 
     public void playGame(String input) throws IOException, InterruptedException {
@@ -63,7 +66,8 @@ public class Player {
                 break;
             case "TUTORIAL":
                 tutorial.startTutorial();
-                playGame(play());
+                //playGame(play()); // test
+                play();
                 break;
             case "EXIT":
                 System.exit(0);
@@ -129,7 +133,7 @@ public class Player {
         String command = commandArray[0];
         String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
-        if (command.equals("EXIT")) { play(); return; }
+        if (command.equalsIgnoreCase("EXIT")) { play(); return; } //if (command.equals("EXIT")) { play(); return; }
         // MOVE
         if (parser.isMoveSynonym(command))  {
             setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));
