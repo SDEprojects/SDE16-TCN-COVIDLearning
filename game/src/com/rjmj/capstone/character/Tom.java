@@ -2,11 +2,11 @@ package com.rjmj.capstone.character;
 
 import java.util.Scanner;
 
-public class Tom implements Character {
+public class Tom implements Character, Color {
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] tomInput = {
                 ANSI_CYAN,
                 "Tom: \"What Online video game did Tom perform a wedding?\"",
@@ -17,9 +17,15 @@ public class Tom implements Character {
                 ANSI_RESET
         };
 
-        for (String tom : tomInput) {
-            Thread.sleep(sleep);
-            System.out.println(tom);
+        try {
+            for (String tom : tomInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(tom);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);

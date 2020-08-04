@@ -2,11 +2,11 @@ package com.rjmj.capstone.character;
 
 import java.util.Scanner;
 
-public class Nelly implements Character {
+public class Nelly implements Character, Color {
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] nellyInput = {
                 ANSI_CYAN,
                 "Nelly: \"To get you started here is a Syringe.  You will need to find the remaining items.\"",
@@ -15,9 +15,15 @@ public class Nelly implements Character {
                 ANSI_RESET
         };
 
-        for (String nelly : nellyInput) {
-            Thread.sleep(sleep);
-            System.out.println(nelly);
+        try {
+            for (String nelly : nellyInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(nelly);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);

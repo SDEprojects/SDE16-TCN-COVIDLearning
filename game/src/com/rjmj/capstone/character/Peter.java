@@ -2,11 +2,11 @@ package com.rjmj.capstone.character;
 
 import java.util.Scanner;
 
-public class Peter implements Character {
+public class Peter implements Character, Color {
     private String questionAnswer;
 
     @Override
-    public String askTheQuestionAndCollectInput() throws InterruptedException {
+    public String askTheQuestionAndCollectInput() {
         String[] peterInput = {
                 ANSI_CYAN,
                 "Peter: \"How many possible versions of the vaccine are there if each ingredient is used once?\"",
@@ -19,10 +19,15 @@ public class Peter implements Character {
 
         System.out.println("\nPeter is standing at the entrance to the Library. " +
                 "He will not let you continue unless you correctly answer this math question:\n");
-
-        for (String peter : peterInput) {
-            Thread.sleep(sleep);
-            System.out.println(peter);
+        try {
+            for (String peter : peterInput) {
+                Thread.sleep(SLEEP_DURATION_MS);
+                System.out.println(peter);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
         }
 
         Scanner sc = new Scanner(System.in);
