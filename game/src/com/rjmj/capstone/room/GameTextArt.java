@@ -1,5 +1,6 @@
 package com.rjmj.capstone.room;
 
+import com.rjmj.capstone.ExceptionMessage;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.player.Color;
 import com.rjmj.capstone.player.Recipe;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameTextArt {
+public class GameTextArt implements ExceptionMessage {
     // https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -79,7 +80,7 @@ public class GameTextArt {
                     "|______________________________________________________|\n" + ANSI_RESET);
     }
 
-    public void introText() throws InterruptedException {
+    public void introText() {
         String[] infoText = {
                 ANSI_BLUE,
                 "Congratulations on your success!! You are celebrating your graduation to OJT with your instructors and friends.",
@@ -93,9 +94,15 @@ public class GameTextArt {
                 ANSI_RESET
         };
 
-        for (String messages : infoText) {
-            Thread.sleep(650);
-            System.out.println(messages);
+        try {
+            for (String messages : infoText) {
+                Thread.sleep(650);
+                System.out.println(messages);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at \"Thread.sleep()\"");
         }
     }
 

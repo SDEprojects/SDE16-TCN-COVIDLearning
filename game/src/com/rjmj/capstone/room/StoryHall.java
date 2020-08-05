@@ -8,7 +8,7 @@ public class StoryHall implements StoryRoom{
     private String nextAction;
 
     @Override
-    public void enter(Scanner scanner) throws InterruptedException {
+    public void enter(Scanner scanner) {
         this.scanner = scanner;
         //System.out.println("You are in HALL now");
         introText();
@@ -33,7 +33,7 @@ public class StoryHall implements StoryRoom{
         return nextAction;
     }
 
-    public void introText() throws InterruptedException {
+    public void introText() {
         String[] infoText = {
                 "\u001B[34m",
                 "You enter a long dark corridor. There is a light at the end that flickers like a fading pulse.",
@@ -56,10 +56,15 @@ public class StoryHall implements StoryRoom{
                 "Out . . . . .",
                 "\u001B[0m"
         };
-
-        for (String messages : infoText) {
-            Thread.sleep(1450);
-            System.out.println(messages);
+        try {
+            for (String messages : infoText) {
+                Thread.sleep(1450);
+                System.out.println(messages);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at \"Thread.sleep()\"");
         }
     }
 }

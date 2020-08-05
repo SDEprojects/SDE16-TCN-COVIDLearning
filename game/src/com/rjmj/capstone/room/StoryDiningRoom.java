@@ -8,7 +8,7 @@ public class StoryDiningRoom implements StoryRoom{
     private String nextAction;
 
     @Override
-    public void enter(Scanner scanner) throws InterruptedException {
+    public void enter(Scanner scanner) {
         this.scanner = scanner;
         diningIntro();
         System.out.println("What would you like to do");
@@ -33,7 +33,7 @@ public class StoryDiningRoom implements StoryRoom{
         return nextAction;
     }
 
-    public void diningIntro() throws InterruptedException {
+    public void diningIntro() {
         String[] diningIntroText = {
                 "\u001B[35m",
                 "You are in the Dining room because you are dying of thirst.",
@@ -46,10 +46,15 @@ public class StoryDiningRoom implements StoryRoom{
                 ,
                 "\u001B[0m"
         };
-
-        for (String messages : diningIntroText) {
-            Thread.sleep(1000);
-            System.out.println(messages);
+        try {
+            for (String messages : diningIntroText) {
+                Thread.sleep(1000);
+                System.out.println(messages);
+            }
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at \"Thread.sleep()\"");
         }
     }
 }
