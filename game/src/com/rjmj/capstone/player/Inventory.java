@@ -39,7 +39,8 @@ public class Inventory {
                     }
                     break;
                 case "Jay":
-                    item = jay.processQuestionAnswer(jay.askTheQuestionAndCollectInput());
+                    item = jay.askQuestionCollectAndProcessResponse(1);
+                    //item = jay.processQuestionAnswer(jay.askTheQuestionAndCollectInput());
                     if (item.equals(jay.getItem())) {
                         if (!inventory.getPlyrInv().contains(item)) {
                             inventory.setPlyrInv(item);
