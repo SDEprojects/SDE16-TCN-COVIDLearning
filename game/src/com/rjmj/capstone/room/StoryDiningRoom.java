@@ -6,11 +6,13 @@ public class StoryDiningRoom implements StoryRoom{
 
     Scanner scanner;
     private String nextAction;
+    private Boolean firstVisit = true;
 
     @Override
     public void enter(Scanner scanner) throws InterruptedException {
         this.scanner = scanner;
-        diningIntro();
+        if (firstVisit) diningIntro();
+        firstVisit = false;
         System.out.println("What would you like to do");
         freeAns();
 

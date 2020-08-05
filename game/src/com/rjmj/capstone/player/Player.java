@@ -145,6 +145,7 @@ public class Player {
         // TALK
         } else if (parser.isTalkSynonym(command)) {
             setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
+            System.out.println(getTalkMsg());
         // TAKE ITEM
         } else if (parser.isTakeSynonym(command)) {
             movementEngine.clearScreen();
