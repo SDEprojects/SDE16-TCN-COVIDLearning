@@ -1,10 +1,12 @@
 package com.rjmj.capstone.room;
 
+import com.rjmj.capstone.ExceptionMessage;
+
 import java.util.Scanner;
 
-public interface StoryRoom {
+public interface StoryRoom extends ExceptionMessage {
 
-    public void enter(Scanner scanner) throws InterruptedException;
+    public void enter(Scanner scanner);
     public String getNextAction();
 
 }

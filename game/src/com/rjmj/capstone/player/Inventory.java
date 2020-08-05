@@ -18,7 +18,7 @@ public class Inventory {
     private Peter peter = new Peter();
     private ArrayList<String> plyrInv = new ArrayList<>();
 
-    public String talkToCharacter(Rooms room, String currentRoom, Inventory inventory, Countdown cd) throws IOException, InterruptedException {
+    public String talkToCharacter(Rooms room, String currentRoom, Inventory inventory, Countdown cd) {
         MovementEngine movementEngine = new MovementEngine();
         movementEngine.clearScreen();
         String item = "";

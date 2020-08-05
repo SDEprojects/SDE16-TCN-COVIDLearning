@@ -58,7 +58,7 @@ public class MovementEngine {
         }
     }
 
-    public String changeRoom(Inventory inventory, String userChoice, Countdown cd) throws IOException, InterruptedException {
+    public String changeRoom(Inventory inventory, String userChoice, Countdown cd) {
         clearScreen();
         String result = getCurrentRoom();
         Map<String,String> rm = getRoom().getROOMS().get(getCurrentRoom());

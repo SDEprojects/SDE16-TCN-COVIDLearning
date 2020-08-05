@@ -61,8 +61,9 @@ public class Player {
                 break;
             case "INTRO":
                 gameTextArt.introText();
-                collectPlayerName();
-                backToMenu();
+                //collectPlayerName();
+                play();
+                //backToMenu(); // TODO need to investigate -> At dining room, type action, NullPointer is thrown
                 break;
             case "TUTORIAL":
                 tutorial.startTutorial();
@@ -91,7 +92,7 @@ public class Player {
         cd.resetTimerNewGame();
     }
 
-    public String collectPlayerActionInput(String userInput) throws IOException, InterruptedException {
+    public String collectPlayerActionInput(String userInput) {
         //Scanner userInput = new Scanner(System.in);
         //currentLocationDisplay();
         if(getMoveMsg().length() > 20){
@@ -247,7 +248,7 @@ public class Player {
                 && pi.contains(ANSI_GREEN + "Green Liquid" + ANSI_CYAN) && pi.contains("Beaker"));
     }
 
-    private void winCheck() throws IOException, InterruptedException {
+    private void winCheck() {
         if(recipe.isMatch()){
             System.out.println("That is correct, you just cured yourself!");
             gameTextArt.winningArtDisplay();
