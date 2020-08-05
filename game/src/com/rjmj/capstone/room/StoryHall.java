@@ -6,12 +6,13 @@ public class StoryHall implements StoryRoom{
 
     Scanner scanner;
     private String nextAction;
+    private Boolean firstVisit = true;
 
     @Override
     public void enter(Scanner scanner) {
         this.scanner = scanner;
-        //System.out.println("You are in HALL now");
-        introText();
+        if (firstVisit) introText();
+        firstVisit = false;
         System.out.println("What now?");
         freeAns();
     }

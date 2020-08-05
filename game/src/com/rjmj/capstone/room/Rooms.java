@@ -19,7 +19,9 @@ public class Rooms {
             entry("DINING ROOM", Map.of(
                     "room", "Dining Room",
                     "character", "Nelly",
-                    "right", "Hall")),
+                    "right", "Hall",
+                    "locked", "true",
+                    "glass", "key")),
             entry("HALL",Map.of(
                     "room", "Hall",
                     "right", "Ball Room",

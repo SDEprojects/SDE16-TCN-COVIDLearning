@@ -39,11 +39,11 @@ public class Inventory {
                     }
                     break;
                 case "Jay":
-                    item = jay.askQuestionCollectAndProcessResponse(1);
-                    if (item.equals(jay.getItem())) {
-                        if (!inventory.getPlyrInv().contains(item)) {
-                            inventory.setPlyrInv(item);
-                            item = "Jay has given you " + item;
+                    Boolean isAnswerCorrect = jay.askQuestionCollectAndProcessResponse();
+                    if (isAnswerCorrect) {
+                        if (!inventory.getPlyrInv().contains(jay.getItem())) {
+                            inventory.setPlyrInv(jay.getItem());
+                            item = "Jay has given you " + jay.getItem();
                         }
                     } else {
                         talkToCharacter(room, currentRoom, inventory, cd);
