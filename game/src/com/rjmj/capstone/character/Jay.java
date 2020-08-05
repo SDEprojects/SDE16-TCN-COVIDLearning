@@ -1,7 +1,5 @@
 package com.rjmj.capstone.character;
 
-import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -21,8 +19,7 @@ public class Jay implements Character {
 
     @Override
     public String askTheQuestionAndCollectInput() {
-        readStoryLinesOutOfFile("Quiz1", SLEEP_DURATION_MS);
-
+        readStoryLinesOutOfFile(QuizBaseKey, SLEEP_DURATION_MS);
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
         return getQuestionAnswer();
@@ -92,7 +89,6 @@ public class Jay implements Character {
         }
     }
 
-
     public String collectUserInput() {
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
@@ -100,3 +96,4 @@ public class Jay implements Character {
     }
 
 }
+
