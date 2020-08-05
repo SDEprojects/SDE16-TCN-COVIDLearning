@@ -23,18 +23,14 @@ public class Jay implements Character {
     public String askTheQuestionAndCollectInput() {
         readStoryLinesOutOfFile("Quiz1", SLEEP_DURATION_MS);
 
-        try {
-            String url_open = "https://www.youtube.com/watch?v=hyctW2abkY4";
-            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at : \"java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open)\"");
-        }
-
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
         return getQuestionAnswer();
+    }
+
+    public void askQuestion(Integer quizNumber) {
+        String quizIdentifier = "Quiz" + String.valueOf(quizNumber);
+        readStoryLinesOutOfFile(quizIdentifier, SLEEP_DURATION_MS);
     }
 
     @Override
@@ -88,6 +84,13 @@ public class Jay implements Character {
                 break;
             }
         }
+    }
+
+
+    public String collectUserInput() {
+        Scanner sc = new Scanner(System.in);
+        setQuestionAnswer(sc.next());
+        return getQuestionAnswer();
     }
 
 }
