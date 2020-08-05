@@ -1,30 +1,25 @@
 package com.rjmj.capstone.character;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Nelly implements Character, Color {
+public class Nelly implements Character{
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "QuizNelly";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
+    /// Temporary -> Specifying the quiz base ///
+    String QuizBaseKey = "Quiz1";
+
     private String questionAnswer;
 
     @Override
     public String askTheQuestionAndCollectInput() {
-        String[] nellyInput = {
-                ANSI_CYAN,
-                "Nelly: \"To get you started here is a Syringe.  You will need to find the remaining items.\"",
-                "Once you have all of the items required, the mix command will become available for you.",
-                "Type Start or any other entry if you are ready to get started.",
-                ANSI_RESET
-        };
-
-        try {
-            for (String nelly : nellyInput) {
-                Thread.sleep(SLEEP_DURATION_MS);
-                System.out.println(nelly);
-            }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
-        }
+        readStoryLinesOutOfFile(QuizBaseKey, SLEEP_DURATION_MS);
 
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
@@ -47,5 +42,21 @@ public class Nelly implements Character, Color {
 
     public String getItem() {
         return "Syringe";
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            } catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+        }
     }
 }
