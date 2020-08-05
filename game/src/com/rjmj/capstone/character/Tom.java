@@ -1,32 +1,25 @@
 package com.rjmj.capstone.character;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Tom implements Character, Color {
+public class Tom implements Character {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "QuizTom";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
+    /// Temporary -> Specifying the quiz base ///
+    String QuizBaseKey = "Quiz1";
+
     private String questionAnswer;
 
     @Override
     public String askTheQuestionAndCollectInput() {
-        String[] tomInput = {
-                ANSI_CYAN,
-                "Tom: \"What Online video game did Tom perform a wedding?\"",
-                "A. Dungeons and Dragons",
-                "B. World of Warcraft",
-                "C. Diablo II",
-                "D. Elder Scrolls",
-                ANSI_RESET
-        };
-
-        try {
-            for (String tom : tomInput) {
-                Thread.sleep(SLEEP_DURATION_MS);
-                System.out.println(tom);
-            }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at : \"Thread.sleep(SLEEP_DURATION_MS);\"");
-        }
+        readStoryLinesOutOfFile(QuizBaseKey, SLEEP_DURATION_MS);
 
         Scanner sc = new Scanner(System.in);
         setQuestionAnswer(sc.next());
@@ -36,11 +29,22 @@ public class Tom implements Character, Color {
     @Override
     public String processQuestionAnswer(String questionAnswer) {
         String result = "";
-        if (questionAnswer.toUpperCase().equals("B")) {
-            System.out.println("Correct");
-            result = getItem();
-        } else {
-            System.out.println("Incorrect, please try again.");
+
+        String ansKey = QuizBaseKey + "_answer";
+        String answer = null;
+        try{
+            answer = bundle.getString(ansKey);
+            if (questionAnswer.equalsIgnoreCase(answer)){
+                System.out.println("Correct");
+                result = getItem();
+            }
+            else{
+                System.out.println("Incorrect, please try again.");
+            }
+        }
+        catch(MissingResourceException e){
+            somethingWentWrong(e);
+            System.out.println("Could not find a key : " + ansKey);
         }
         return result;
     }
@@ -55,5 +59,21 @@ public class Tom implements Character, Color {
 
     public String getItem() {
         return ANSI_BLUE + "Blue Liquid" + ANSI_CYAN;
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            } catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+        }
     }
 }
