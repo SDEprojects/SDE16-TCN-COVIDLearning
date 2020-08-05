@@ -13,8 +13,9 @@ public class GameTimer implements Runnable{
     String timeString = "";
     JButton button;
 
-    public GameTimer(){
-        frame=new JFrame();
+    public GameTimer() {
+
+            frame=new JFrame();
 
         thread = new Thread(this);
         thread.start();

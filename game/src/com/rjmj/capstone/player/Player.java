@@ -87,6 +87,7 @@ public class Player {
         movementEngine.clearScreen();
         System.out.println(ANSI_PURPLE + "Username has been set to: " + ANSI_RESET + ANSI_RED + getPlayerName() + ANSI_RESET);
         cd.startTimer();
+       // gameTimer.run();
         recipe.mixRandomRecipe();
         cd.resetTimerNewGame();
     }
