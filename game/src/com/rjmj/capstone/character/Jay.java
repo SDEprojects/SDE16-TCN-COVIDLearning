@@ -28,6 +28,12 @@ public class Jay implements Character {
         return getQuestionAnswer();
     }
 
+    public String askQuestionCollectAndProcessResponse(Integer quizNumber) {
+        askQuestion(quizNumber);
+        String userResponse = collectUserInput();
+        return processQuestionAnswer(userResponse);
+    }
+
     public void askQuestion(Integer quizNumber) {
         String quizIdentifier = "Quiz" + String.valueOf(quizNumber);
         readStoryLinesOutOfFile(quizIdentifier, SLEEP_DURATION_MS);
