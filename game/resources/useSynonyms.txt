@@ -3,3 +3,5 @@ open
 read
 fire
 write
+drink
+eat
