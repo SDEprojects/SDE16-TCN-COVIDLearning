@@ -1,6 +1,7 @@
 package com.rjmj.capstone.tutorial;
 
 import com.rjmj.capstone.character.Color;
+import com.rjmj.capstone.engines.MovementEngine;
 
 import java.util.*;
 
@@ -13,6 +14,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
 
     //{0}:ANSI_CYAN, {1}:ANSI_RED, {2}:ANSI_BLUE, {3}:ANSI_RESET
 
+    private MovementEngine movementEngine = new MovementEngine();
     private Scanner userInput = new Scanner(System.in);
     private String playerLocation = "HALL";
     private final int DELAY = 700;
@@ -26,12 +28,13 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
     private TutorialParser tutorialParser = new TutorialParser();
 
 
-    public void startLookAroundTutorial() throws InterruptedException{
+    public void startLookAroundTutorial(){
         hallInventory.add("MacBook Pro");
         ballRoomInventory.add("Ultrawide Monitor");
         movieRoomInventory.add("Cell Phone");
-        clearScreen();
+        movementEngine.clearScreen();
         lookAroundTakeItemIntroText();
+        movementEngine.clearScreen();
         lookAroundEngine();
     }
 
@@ -40,7 +43,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
         lookAroundTutorialInputCollection();
     }
 
-    private void lookAroundEngine() throws InterruptedException {
+    private void lookAroundEngine() {
         switch(getPlayerLocation()) {
             case "HALL":
                 MapTutorial.mapDisplay("HALL");
@@ -57,7 +60,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
     }
 
 
-    private void hallRoomEngine() throws InterruptedException {
+    private void hallRoomEngine() {
 
         readStoryLinesOutOfFile("hallRoomEngineIntro", DELAY);
         String result = lookAroundTutorialInputCollection();
@@ -68,7 +71,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
                 if(resultParser[1].equalsIgnoreCase("right")){
                     setPlayerLocation("BALL ROOM");
                     readStoryLinesOutOfFile("hallRoomEngineIntroMoveBallRoom", DELAY);
-                    clearScreen();
+                    movementEngine.clearScreen();
                 }
                 else{
                     readStoryLinesOutOfFile("seeNothing", DELAY);
@@ -109,7 +112,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
         }
     }
 
-    private void ballRoomEngine() throws InterruptedException {
+    private void ballRoomEngine() {
         readStoryLinesOutOfFile("ballRoomEngineIntro", DELAY);
 
             String result = lookAroundTutorialInputCollection();
@@ -120,12 +123,12 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
                     if(resultParser[1].equalsIgnoreCase("right")){
                         setPlayerLocation("MOVIE ROOM");
                         readStoryLinesOutOfFile("ballRoomEngineIntroMoveMovieRoom", DELAY);
-                        clearScreen();
+                        movementEngine.clearScreen();
                     }
                     else if(resultParser[1].equalsIgnoreCase("left")){
                         setPlayerLocation("HALL");
                         readStoryLinesOutOfFile("ballRoomEngineIntroMoveHall", DELAY);
-                        clearScreen();
+                        movementEngine.clearScreen();
                     }
                     else{
                         readStoryLinesOutOfFile("seeNothing", DELAY);
@@ -165,7 +168,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
             }
         }
 
-    private void movieRoomEngine() throws InterruptedException {
+    private void movieRoomEngine() {
         readStoryLinesOutOfFile("movieRoomEngineIntro", DELAY);
         String result = lookAroundTutorialInputCollection();
         String[] resultParser = tutorialParser.parseAvailableActions(result);
@@ -176,7 +179,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
                 if(resultParser[1].equalsIgnoreCase("left")){
                     setPlayerLocation("BALL ROOM");
                     readStoryLinesOutOfFile("movieRoomEngineIntroMoveBallRoom", DELAY);
-                    clearScreen();
+                    movementEngine.clearScreen();
                 }
                 else{
                     readStoryLinesOutOfFile("seeNothing", DELAY);
@@ -222,18 +225,18 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
     }
 
 
-    private void clearScreen() {
-        try {
-            Thread.sleep(DELAY);
-            for (int i = 0; i < 50; i++) {
-                System.out.println("\b");
-            }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at \"Thread.sleep()\"");
-        }
-    }
+//    private void clearScreen() {
+//        try {
+//            Thread.sleep(DELAY);
+//            for (int i = 0; i < 50; i++) {
+//                System.out.println("\b");
+//            }
+//        }
+//        catch(Exception e){
+//            somethingWentWrong(e);
+//            System.out.println("Please check at \"Thread.sleep()\"");
+//        }
+//    }
 
     private String lookAroundTutorialInputCollection() {
         return userInput.nextLine().toUpperCase();

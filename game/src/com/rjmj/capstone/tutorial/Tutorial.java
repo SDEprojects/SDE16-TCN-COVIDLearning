@@ -5,7 +5,7 @@ public class Tutorial {
     private MovingTutorial movingTutorial = new MovingTutorial();
     private LookAroundItemTutorial lookAroundItemTutorial = new LookAroundItemTutorial();
 
-    public void startTutorial() throws InterruptedException {
+    public void startTutorial() {
         talkingTutorial.startTalkingTutorial();
         movingTutorial.startMovingTutorial();
         lookAroundItemTutorial.startLookAroundTutorial();
