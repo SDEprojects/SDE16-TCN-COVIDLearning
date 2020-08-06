@@ -64,13 +64,7 @@ public class Player {
                 //backToMenu(); // TODO need to investigate -> At dining room, type action, NullPointer is thrown
                 break;
             case "TUTORIAL":
-                try {
-                    tutorial.startTutorial();
-                }
-                catch(Exception e){
-                    System.out.println("for temporary"); //TODO replace with proper catch with message
-                }
-                //playGame(play()); // test
+                tutorial.startTutorial();
                 play();
                 break;
             case "EXIT":
