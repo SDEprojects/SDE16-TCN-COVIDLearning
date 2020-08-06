@@ -1,10 +1,12 @@
 package com.rjmj.capstone.engine;
 
+import com.rjmj.capstone.ExceptionMessage;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Parser {
+public class Parser implements ExceptionMessage {
     private Scanner scanner;
 
     private ArrayList<String> searchSynonyms;
@@ -31,7 +33,7 @@ public class Parser {
     private BufferedReader takeReader;
     private BufferedReader talkReader;
 
-    public Parser() throws IOException {
+    public Parser() {
         scanner = new Scanner(System.in);
 
         searchSynonyms = new ArrayList<>();
@@ -60,40 +62,65 @@ public class Parser {
     }
 
 
-    private void instantiateSearchSynonymArray() throws IOException {
+    private void instantiateSearchSynonymArray() {
         try {
             while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());
-        } finally {
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());");
+        }
+        finally {
 
         }
     }
 
-    private void instantiateMoveSynonymArray() throws IOException {
+    private void instantiateMoveSynonymArray() {
         try {
             while (moveReader.ready()) moveSynonyms.add(moveReader.readLine());
-        } finally {
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());");
+        }
+        finally {
         }
     }
 
-    private void instantiateUseSynonymArray() throws IOException {
+    private void instantiateUseSynonymArray(){
         try {
             while (useReader.ready()) useSynonyms.add(useReader.readLine());
-        } finally {
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());");
+        }
+        finally {
 
         }
     }
 
-    private void instantiateTakeSynonymArray() throws IOException {
+    private void instantiateTakeSynonymArray() {
         try {
             while (takeReader.ready()) takeSynonyms.add(takeReader.readLine());
-        } finally {
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());");
+        }
+        finally {
         }
     }
 
-    private void instantiateTalkSynonymArray() throws IOException {
+    private void instantiateTalkSynonymArray() {
         try {
             while (talkReader.ready()) talkSynonyms.add(talkReader.readLine());
-        } finally {
+        }
+        catch(Exception e){
+            somethingWentWrong(e);
+            System.out.println("Please check at : while (searchReader.ready()) searchSynonyms.add(searchReader.readLine());");
+        }
+        finally {
 
         }
     }

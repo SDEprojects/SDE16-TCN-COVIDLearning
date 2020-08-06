@@ -42,17 +42,15 @@ public class Player {
 
 
     //public String play() {
-    public void play() throws IOException, InterruptedException {
+    public void play() {
         Scanner userInput = new Scanner(System.in);
         gameTextArt.introArt();
         gameTextArt.introTextDelayed();
         String userChoice = userInput.next().toUpperCase().trim();
-        //setPlayInput(userChoice);
-        //return getPlayInput();
-        playGame(userChoice); // test
+        playGame(userChoice);
     }
 
-    public void playGame(String input) throws IOException, InterruptedException {
+    public void playGame(String input) {
         switch (input) {
             case "START":
                 parser = new Parser();
@@ -66,7 +64,12 @@ public class Player {
                 //backToMenu(); // TODO need to investigate -> At dining room, type action, NullPointer is thrown
                 break;
             case "TUTORIAL":
-                tutorial.startTutorial();
+                try {
+                    tutorial.startTutorial();
+                }
+                catch(Exception e){
+                    System.out.println("for temporary"); //TODO replace with proper catch with message
+                }
                 //playGame(play()); // test
                 play();
                 break;
@@ -128,7 +131,7 @@ public class Player {
 
 
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
-    public void parseAvailableActions(String input) throws IOException, InterruptedException {
+    public void parseAvailableActions(String input) {
         Rooms room = new Rooms();
         String[] commandArray = input.toLowerCase().split("\\s+", 2);
         String command = commandArray[0];
@@ -172,7 +175,7 @@ public class Player {
 
 
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
-    private void availableActions(String input) throws IOException, InterruptedException {
+    private void availableActions(String input) {
         Rooms room = new Rooms();
 
         switch(input) {
@@ -260,7 +263,7 @@ public class Player {
         }
     }
 
-    private void backToMenu() throws IOException, InterruptedException {
+    private void backToMenu() {
 
         Scanner scanner = new Scanner(System.in);
 
