@@ -1,8 +1,18 @@
 package com.rjmj.capstone.room;
 
+import com.rjmj.capstone.character.Color;
+
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class StoryDiningRoom implements StoryRoom{
+public class StoryDiningRoom implements StoryRoom, Color {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "storyDiningRoom";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
 
     Scanner scanner;
     private String nextAction;
@@ -36,27 +46,21 @@ public class StoryDiningRoom implements StoryRoom{
     }
 
     public void diningIntro() {
-        String[] diningIntroText = {
-                "\u001B[35m",
-                "You are in the Dining room because you are dying of thirst.",
-                "There's no trace of water or food you see a glass on the table half filled with a liquid.",
-                "You find it fishy but you take a chance and drink.",
-                "Now you feel horrible with sudden fever, coughing and sweating, the fear of COVID virus is haunting you.",
-                "You are regretting the decision of drinking the liquid and badly looking around for some HELP!!",
-                "You are struggling to breath you feel half dead but you don't want to give up suddenly you hear some noises from the next room.",
-                "You are dying to seek help! You reach out to the door to open but your luck isn't favouring you today.The room is LOCKED!!!"
-                ,
-                "\u001B[0m"
-        };
-        try {
-            for (String messages : diningIntroText) {
-                Thread.sleep(1000);
-                System.out.println(messages);
+        readStoryLinesOutOfFile("Story", 1000);
+    }
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            } catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
             }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at \"Thread.sleep()\"");
         }
     }
 }

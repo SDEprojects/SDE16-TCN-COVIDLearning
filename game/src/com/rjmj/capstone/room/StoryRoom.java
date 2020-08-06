@@ -14,7 +14,7 @@ public interface StoryRoom extends ExceptionMessage {
     ///////////////////////// For resource bundle /////////////////////////
     final String PATH = "com.rjmj.capstone.room.files.";
     ResourceBundle.Control rbc = ResourceBundle.Control.getControl(ResourceBundle.Control.FORMAT_DEFAULT);
-    public final int MAX_ITERATION_DISPLAY_STORIES = 10;
+    public final int MAX_ITERATION_DISPLAY_STORIES = 30;
 
 
     public default void displayStoryLineByLine(String msg, int SLEEP_DURATION_MS){
