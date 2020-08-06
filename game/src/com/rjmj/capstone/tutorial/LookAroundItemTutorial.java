@@ -224,20 +224,6 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
         lookAroundTutorialInputCollection();
     }
 
-
-//    private void clearScreen() {
-//        try {
-//            Thread.sleep(DELAY);
-//            for (int i = 0; i < 50; i++) {
-//                System.out.println("\b");
-//            }
-//        }
-//        catch(Exception e){
-//            somethingWentWrong(e);
-//            System.out.println("Please check at \"Thread.sleep()\"");
-//        }
-//    }
-
     private String lookAroundTutorialInputCollection() {
         return userInput.nextLine().toUpperCase();
     }
