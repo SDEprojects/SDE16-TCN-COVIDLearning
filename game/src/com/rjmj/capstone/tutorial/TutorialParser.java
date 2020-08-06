@@ -2,9 +2,6 @@ package com.rjmj.capstone.tutorial;
 
 import com.rjmj.capstone.ExceptionMessage;
 import com.rjmj.capstone.engine.Parser;
-import com.rjmj.capstone.room.Rooms;
-
-import java.io.IOException;
 
 public class TutorialParser implements ExceptionMessage {
 
