@@ -32,35 +32,20 @@ public class StoryKitchen implements StoryRoom, Color {
     }
 
     private void Story(){
-        readStoryLinesOutOfFile("story1", 750);
+        wrapReadStoryLinesOutOfFile("story1", 750);
+        wrapReadStoryLinesOutOfFile("story2", 1000);
+        wrapReadStoryLinesOutOfFile("story3", 1000);
+        wrapReadStoryLinesOutOfFile("story4", 1000);
+        wrapReadStoryLinesOutOfFile("story5", 1000);
+        wrapReadStoryLinesOutOfFile("story6", 1200);
+        wrapReadStoryLinesOutOfFile("story7", 650);
+        wrapReadStoryLinesOutOfFile("story8", 1000);
+    }
+
+    private void wrapReadStoryLinesOutOfFile(String key, int timeDuration){
+        readStoryLinesOutOfFile(key, timeDuration);
         scanner.nextLine();
         movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story2", 1000);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story3", 1000);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story4", 1000);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story5", 1000);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story6", 1200);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story7", 650);
-        scanner.nextLine();
-        movementEngine.clearScreen();
-
-        readStoryLinesOutOfFile("story8", 1100);
     }
 
     private void freeAns(){
