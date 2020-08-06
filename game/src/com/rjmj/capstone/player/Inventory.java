@@ -19,6 +19,7 @@ public class Inventory {
     private ArrayList<String> plyrInv = new ArrayList<>();
 
     public String talkToCharacter(Rooms room, String currentRoom, Inventory inventory, Countdown cd) {
+        Boolean isAnswerCorrect;
         MovementEngine movementEngine = new MovementEngine();
         movementEngine.clearScreen();
         String item = "";
@@ -28,18 +29,18 @@ public class Inventory {
 
             switch (character) {
                 case "Tom":
-                    item = tom.processQuestionAnswer(tom.askTheQuestionAndCollectInput());
-                    if (item.equals(tom.getItem())) {
-                        if (!inventory.getPlyrInv().contains(item)) {
-                            inventory.setPlyrInv(item);
-                            item = "Tom has given you " + item;
+                    isAnswerCorrect = tom.askQuestionCollectAndProcessResponse();
+                    if (isAnswerCorrect) {
+                        if (!inventory.getPlyrInv().contains(tom.getItem())) {
+                            inventory.setPlyrInv(tom.getItem());
+                            item = "Tom has given you " + tom.getItem();
                         }
                     } else {
                         talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Jay":
-                    Boolean isAnswerCorrect = jay.askQuestionCollectAndProcessResponse();
+                    isAnswerCorrect = jay.askQuestionCollectAndProcessResponse();
                     if (isAnswerCorrect) {
                         if (!inventory.getPlyrInv().contains(jay.getItem())) {
                             inventory.setPlyrInv(jay.getItem());
@@ -50,11 +51,11 @@ public class Inventory {
                     }
                     break;
                 case "John":
-                    item = john.processQuestionAnswer(john.askTheQuestionAndCollectInput());
-                    if (item.equals(john.getItem())) {
-                        if (!inventory.getPlyrInv().contains(item)) {
-                            inventory.setPlyrInv(item);
-                            item = "John has given you a " + item;
+                    isAnswerCorrect = john.askQuestionCollectAndProcessResponse();
+                    if (isAnswerCorrect) {
+                        if (!inventory.getPlyrInv().contains(john.getItem())) {
+                            inventory.setPlyrInv(john.getItem());
+                            item = "John has given you a " + john.getItem();
                             if (inventory.getPlyrInv().contains("Box")){
                                 cd.addTimeBuff();
                             }
@@ -64,8 +65,8 @@ public class Inventory {
                     }
                     break;
                 case "Peter":
-                    item = peter.processQuestionAnswer(peter.askTheQuestionAndCollectInput());
-                    if (item.equals(peter.getItem())) {
+                    isAnswerCorrect = peter.askQuestionCollectAndProcessResponse();
+                    if (isAnswerCorrect) {
                         item = "\nPeter has granted you access to the Library " +
                                 "and there is a secret CAVE behind the bookshelves!!!\n" +
                                 "and a Lab behind another set of books.";
@@ -74,10 +75,10 @@ public class Inventory {
                     }
                     break;
                 case "Zach":
-                    item = zach.processQuestionAnswer(zach.askTheQuestionAndCollectInput());
-                    if (item.equals(zach.getItem())) {
-                        if (!inventory.getPlyrInv().contains(item)) {
-                            inventory.setPlyrInv(item);
+                    isAnswerCorrect = zach.askQuestionCollectAndProcessResponse();
+                    if (isAnswerCorrect) {
+                        if (!inventory.getPlyrInv().contains(zach.getItem())) {
+                            inventory.setPlyrInv(zach.getItem());
                             item = Recipe.recipeArt();
                         }
                     } else {

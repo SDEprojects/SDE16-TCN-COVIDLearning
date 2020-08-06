@@ -18,7 +18,6 @@ public class Jay implements Character {
     private Random random = new Random();
     private String questionAnswer;
 
-
     public Boolean askQuestionCollectAndProcessResponse() {
         int quizNumber = random.nextInt(3) + 1;
         askQuestion(quizNumber);

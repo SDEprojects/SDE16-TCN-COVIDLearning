@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Nelly implements Character{
 
@@ -14,8 +15,16 @@ public class Nelly implements Character{
 
     /// Temporary -> Specifying the quiz base ///
     String QuizBaseKey = "Quiz1";
-
+    private Random random = new Random();
     private String questionAnswer;
+
+
+
+
+
+
+
+
 
     @Override
     public String askTheQuestionAndCollectInput() {

@@ -7,16 +7,16 @@ import static org.junit.Assert.*;
 public class TomTest {
 
     @Test
-    public void processQuestionAnswerPositivB() throws InterruptedException {
+    public void processQuestionAnswerPositiveA() throws InterruptedException {
         Tom tom = new Tom();
         String expectedString = "\u001B[34m" + "Blue Liquid" + "\u001B[36m";
-        assertEquals(expectedString, tom.processQuestionAnswer("B"));
+        assertEquals(expectedString, tom.processQuestionAnswer("A"));
     }
 
     @Test
-    public void processQuestionAnswerNegativeA() throws InterruptedException {
+    public void processQuestionAnswerNegativeB() throws InterruptedException {
         Tom tom = new Tom();
-        assertNotEquals("Blue Liquid", tom.processQuestionAnswer("A"));
+        assertNotEquals("\u001B[34m" + "Blue Liquid" + "\u001B[36m", tom.processQuestionAnswer("B"));
     }
 
     @Test

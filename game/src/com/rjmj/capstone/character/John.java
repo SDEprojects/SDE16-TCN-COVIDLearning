@@ -2,10 +2,9 @@ package com.rjmj.capstone.character;
 
 import com.rjmj.capstone.engines.MovementEngine;
 
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
+import java.util.Random;
+
 
 public class John implements Character {
 
@@ -16,8 +15,49 @@ public class John implements Character {
 
     /// Temporary -> Specifying the quiz base ///
     String QuizBaseKey = "Quiz1";
-
+    private Random random = new Random();
     private String questionAnswer;
+
+    public Boolean askQuestionCollectAndProcessResponse() {
+        int quizNumber = random.nextInt(3) + 1;
+        askQuestion(quizNumber);
+        String userResponse = collectUserInput();
+        return processAnswer(quizNumber, userResponse);
+    }
+
+    public void askQuestion(Integer quizNumber) {
+        String quizIdentifier = "Quiz" + String.valueOf(quizNumber);
+        readStoryLinesOutOfFile(quizIdentifier, SLEEP_DURATION_MS);
+    }
+
+    public String collectUserInput() {
+        Scanner sc = new Scanner(System.in);
+        setQuestionAnswer(sc.next());
+        return getQuestionAnswer();
+    }
+
+    public Boolean processAnswer(Integer quizNumber, String questionAnswer) {
+        String result = "";
+        Boolean finalResult = false;
+        String ansKey = "Quiz" + String.valueOf(quizNumber) + "_answer";
+        String answer = null;
+        try{
+            answer = bundle.getString(ansKey);
+            if (questionAnswer.equalsIgnoreCase(answer)){
+                System.out.println("Correct");
+                finalResult = true;
+            }
+            else{
+                System.out.println("Incorrect, please try again.");
+            }
+        }
+        catch(MissingResourceException e){
+            somethingWentWrong(e);
+            System.out.println("Could not find a key : " + ansKey);
+        }
+
+        return finalResult;
+    }
 
     @Override
     public String askTheQuestionAndCollectInput() {
