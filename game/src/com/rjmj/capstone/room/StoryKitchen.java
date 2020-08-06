@@ -29,6 +29,23 @@ public class StoryKitchen implements StoryRoom{
         }
     }
 
+    private void Story(){
+        System.out.println("You just opened the door of the kitchen.");
+        System.out.println("The light was on. You see a sink next to the door and a gas stove in the middle of the kitchen. ");
+        System.out.println("It was chilly inside. On the counter and the floor, you do not see any dust, food or water stains.");
+        System.out.println("You stepped into the Kitchen.");
+        System.out.println("The light was suddenly off.");
+        System.out.println("You see a flame coming up from the stove.");
+        System.out.println("Next moment, you heard something clicked.");
+        System.out.println("You turned around and tried to open the door, but you could not. You ran to the other door, it was also locked.");
+        System.out.println("You just realized that you were locked out.");
+        System.out.println();
+        System.out.println("You see 3 cupboards mounted on the wall, a kettle, a toaster, and a coffee machine on the counter.");
+
+    }
+
+
+
     private void StoryIntro(){
         System.out.println("You just opened the door of the kitchen.");
         System.out.println("The light was on. You see a sink next to the door and a gas stove in the middle of the kitchen. ");
@@ -41,6 +58,10 @@ public class StoryKitchen implements StoryRoom{
         System.out.println("You just realized that you were locked out.");
         System.out.println();
         System.out.println("You see 3 cupboards mounted on the wall, a kettle, a toaster, and a coffee machine on the counter.");
+        System.out.println();
+        System.out.println("You walk to the cupboards. Open from left to right one by one.");
+        System.out.println("The most left one was locked.");
+        System.out.println("The middle one was ");
         askQuestionStoryIntro();
     }
 
