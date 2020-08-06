@@ -20,6 +20,7 @@ public class TalkingTutorial implements InterfaceTutorial, Color {
     private Scanner userInput = new Scanner(System.in);
 
     public void startTalkingTutorial(){
+        movementEngine.clearScreen();
         tutorialIntroductionDisplay();
         movementEngine.clearScreen();
         talkingTutorialPrompt();

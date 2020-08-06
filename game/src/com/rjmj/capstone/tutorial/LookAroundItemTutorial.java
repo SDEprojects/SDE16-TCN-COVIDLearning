@@ -43,15 +43,15 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
     private void lookAroundEngine() throws InterruptedException {
         switch(getPlayerLocation()) {
             case "HALL":
-                mapDisplay("HALL");
+                MapTutorial.mapDisplay("HALL");
                 hallRoomEngine();
                 break;
             case "BALL ROOM":
-                mapDisplay("BALL ROOM");
+                MapTutorial.mapDisplay("BALL ROOM");
                 ballRoomEngine();
                 break;
             case "MOVIE ROOM":
-                mapDisplay("MOVIE ROOM");
+                MapTutorial.mapDisplay("MOVIE ROOM");
                 movieRoomEngine();
         }
     }
@@ -232,50 +232,6 @@ public class LookAroundItemTutorial implements InterfaceTutorial, Color {
         catch(Exception e){
             somethingWentWrong(e);
             System.out.println("Please check at \"Thread.sleep()\"");
-        }
-    }
-
-    private void mapDisplay(String currentRoom) {
-        switch(currentRoom) {
-            case "HALL":
-                System.out.println(ANSI_CYAN +
-                        "___________________________________________________________________________________________\n" +
-                        "|                            |                                |                             |\n" +
-                        "|          Hall              |          Ball Room             |          Movie Room         |\n" +
-                        "|         << X >>            |                                |                             |\n" +
-                        "|    Move Choices: Right     |   Move Choices: Left, Right    |     Move Choices: Left      |\n" +
-                        "|                            |                                |                             |\n" +
-                        "|                            |                                |                             |\n" +
-                        "-----------------------------|--------------------------------|-----------------------------|\n"
-                        + ANSI_RESET
-                );
-                break;
-            case "BALL ROOM":
-                System.out.println(ANSI_CYAN +
-                        "___________________________________________________________________________________________\n" +
-                        "|                            |                                |                             |\n" +
-                        "|          Hall              |          Ball Room             |          Movie Room         |\n" +
-                        "|                            |           << X >>              |                             |\n" +
-                        "|    Move Choices: Right     |   Move Choices: Left, Right    |     Move Choices: Left      |\n" +
-                        "|                            |                                |                             |\n" +
-                        "|                            |                                |                             |\n" +
-                        "-----------------------------|--------------------------------|-----------------------------|\n"
-                        + ANSI_RESET
-                );
-                break;
-            case "MOVIE ROOM":
-                System.out.println(ANSI_CYAN +
-                        "___________________________________________________________________________________________\n" +
-                        "|                            |                                |                             |\n" +
-                        "|          Hall              |          Ball Room             |          Movie Room         |\n" +
-                        "|                            |                                |           << X >>           |\n" +
-                        "|    Move Choices: Right     |   Move Choices: Left, Right    |     Move Choices: Left      |\n" +
-                        "|                            |                                |                             |\n" +
-                        "|                            |                                |                             |\n" +
-                        "-----------------------------|--------------------------------|-----------------------------|\n"
-                        + ANSI_RESET
-                );
-                break;
         }
     }
 
