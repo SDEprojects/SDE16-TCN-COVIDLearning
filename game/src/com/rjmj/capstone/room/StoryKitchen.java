@@ -14,6 +14,7 @@ public class StoryKitchen implements StoryRoom{
     private int countWalkTo = 0;
     private List<String> localItems = new ArrayList<>();
 
+
     @Override
     public void enter(Scanner scanner) {
         this.scanner = scanner;
