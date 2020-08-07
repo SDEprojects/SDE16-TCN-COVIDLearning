@@ -93,7 +93,7 @@ public class Jay implements Character {
     }
 
     public String getItem() {
-        return ANSI_RED +"Red Liquid" + ANSI_CYAN;
+        return ANSI_RED +"Red Liquid" + ANSI_RESET;
     }
 
 

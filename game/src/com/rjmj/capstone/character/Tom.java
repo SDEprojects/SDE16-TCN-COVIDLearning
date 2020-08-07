@@ -97,7 +97,7 @@ public class Tom implements Character {
     }
 
     public String getItem() {
-        return ANSI_BLUE + "Blue Liquid" + ANSI_CYAN;
+        return ANSI_BLUE + "Blue Liquid" + ANSI_RESET;
     }
 
     /** For accessing and displaying stories in Resource Bundle file */
