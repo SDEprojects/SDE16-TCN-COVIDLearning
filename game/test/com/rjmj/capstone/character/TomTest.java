@@ -9,7 +9,7 @@ public class TomTest {
     @Test
     public void processQuestionAnswerPositiveA() throws InterruptedException {
         Tom tom = new Tom();
-        String expectedString = "\u001B[34m" + "Blue Liquid" + "\u001B[36m";
+        String expectedString = "\u001B[34m" + "Blue Liquid" + "\u001B[0m";
         assertEquals(expectedString, tom.processQuestionAnswer("A"));
     }
 
@@ -34,7 +34,7 @@ public class TomTest {
     @Test
     public void getItemPositive() {
         Tom tom = new Tom();
-        String expectedString = "\u001B[34m" + "Blue Liquid" + "\u001B[36m";
+        String expectedString = "\u001B[34m" + "Blue Liquid" + "\u001B[0m";
         assertEquals(expectedString, tom.getItem());
     }
 
