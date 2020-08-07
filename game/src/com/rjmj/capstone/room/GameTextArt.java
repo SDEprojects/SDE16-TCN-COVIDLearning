@@ -1,15 +1,21 @@
 package com.rjmj.capstone.room;
 
 import com.rjmj.capstone.Color;
+import com.rjmj.capstone.engine.UserInput;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.player.ColorEnum;
 import com.rjmj.capstone.player.Recipe;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class GameTextArt implements Color {
+public class GameTextArt implements StoryRoomResourceBundle {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "GameTextArt";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
+    Scanner scanner = new Scanner(System.in);
 
     private MovementEngine movementEngine = new MovementEngine();
 
@@ -25,6 +31,7 @@ public class GameTextArt implements Color {
     }
 
     public void introArt() {
+        movementEngine.clearScreen();
         System.out.println(ANSI_BLUE + "\n" +
                 "                                                                                                                                                                                      \n" +
                 " @@@@@@   @@@@@@@   @@@@@@@   @@@@@@@   @@@@@@@@  @@@  @@@  @@@@@@@  @@@   @@@@@@@  @@@@@@@@   @@@@@@   @@@  @@@  @@@  @@@@@@@                                                        \n" +
@@ -71,29 +78,9 @@ public class GameTextArt implements Color {
     }
 
     public void introText() {
-        String[] infoText = {
-                ANSI_BLUE,
-                "Congratulations on your success!! You are celebrating your graduation to OJT with your instructors and friends.",
-                "But mind you there's a stranger in the party who could ruin your dreams.",
-                "Be careful when you drink or eat anything in the party, it could be your last day",
-                "You could get injected with COVID Virus. Enjoy but be wary",
-                "If you are coughing, having shortness of breath or fever don't endanger your life rush to find the vaccine located in this Mansion. ",
-                "If you fail to properly mix and administer the vaccine",
-                "You will not see tomorrow because you will die in 10 minutes.",
-                "To move around, you need to type 'Up' 'Back' 'Left' and 'Right' as applicable.",
-                ANSI_RESET
-        };
-
-        try {
-            for (String messages : infoText) {
-                Thread.sleep(650);
-                System.out.println(messages);
-            }
-        }
-        catch(Exception e){
-            somethingWentWrong(e);
-            System.out.println("Please check at \"Thread.sleep()\"");
-        }
+        movementEngine.clearScreen();
+        readStoryLinesOutOfFile("IntroText", 1200);
+        scanner.nextLine();
     }
 
 // Display art https://www.asciiart.eu/buildings-and-places/other
@@ -770,11 +757,30 @@ public class GameTextArt implements Color {
 
 
         }
-        System.out.println("You are in "+ location);
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(ANSI_CYAN + "Type back to return." + ANSI_RESET);
+        System.out.print(textPainter(bundle.getString("mapPrompt1")));
+        System.out.println(" "+ANSI_CYAN+ location + ANSI_RESET + ".");
+        System.out.println(textPainter(bundle.getString("mapPrompt2")));
         scanner.next();
         movementEngine.clearScreen();
     }
 
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            }
+            catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
+        }
+    }
 }
