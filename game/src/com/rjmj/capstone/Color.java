@@ -17,7 +17,7 @@ public interface Color extends ExceptionMessage{
 
     /**
      * Coloring the fonts
-     * {0}:ANSI_CYAN, {1}:ANSI_RED, {2}:ANSI_BLUE, {3}:ANSI_RESET, {4}:ANSI_PURPLE, {5}:ANSI_YELLOW
+     * {0}:ANSI_CYAN, {1}:ANSI_RED, {2}:ANSI_BLUE, {3}:ANSI_RESET, {4}:ANSI_PURPLE, {5}:ANSI_YELLOW, {6}:ANSI_GREEN
      */
     public default String textPainter(String text) {
         return MessageFormat.format(
@@ -27,7 +27,8 @@ public interface Color extends ExceptionMessage{
                 ANSI_BLUE,
                 ANSI_RESET,
                 ANSI_PURPLE,
-                ANSI_YELLOW);
+                ANSI_YELLOW,
+                ANSI_GREEN);
     }
 
 }
