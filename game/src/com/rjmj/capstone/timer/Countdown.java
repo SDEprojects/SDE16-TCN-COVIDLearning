@@ -1,15 +1,17 @@
 package com.rjmj.capstone.timer;
 
+import com.rjmj.capstone.Color;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-public class Countdown {
+public class Countdown implements Color {
     private long delay = 1000; //milliseconds
     private final Timer timer = new Timer();
     private long timeLeft = 600000;
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_RESET = "\u001B[0m";
+//    public static final String ANSI_PURPLE = "\u001B[35m";
+//    public static final String ANSI_RESET = "\u001B[0m";
 
     public void addTimeBuff(){
         setTimeLeft(getTimeLeft() + getTimeBuff());

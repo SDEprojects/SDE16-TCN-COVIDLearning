@@ -1,9 +1,8 @@
 package com.rjmj.capstone.tutorial;
 
-import com.rjmj.capstone.ExceptionMessage;
 import com.rjmj.capstone.engine.Parser;
 
-public class TutorialParser implements ExceptionMessage {
+public class TutorialParser implements InterfaceTutorial {
 
     private Parser parser;
 

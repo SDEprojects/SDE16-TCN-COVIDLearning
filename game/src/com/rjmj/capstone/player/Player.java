@@ -1,5 +1,6 @@
 package com.rjmj.capstone.player;
 
+import com.rjmj.capstone.Color;
 import com.rjmj.capstone.engine.Parser;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.room.*;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player {
+public class Player implements Color {
     private String playerName;
     private String playerActionSelection;
     private String playInput;
@@ -21,15 +22,15 @@ public class Player {
     private Tutorial tutorial = new Tutorial();
     private Countdown cd = new Countdown();
     private GameTimer gameTimer = new GameTimer(); //CB added timer to the game
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_CYAN = "\u001B[36m";
-    private static final String ANSI_PURPLE = "\u001B[35m";
-    private static final String ANSI_YELLOW = "\u001B[33m";
-    private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_BLUE = "\u001B[34m";
-    private static final String ANSI_GREEN = "\u001B[32m";
-    private static final String ANSI_WHITE = "\u001B[37m";
-    private static final String ANSI_BLACK = "\u001B[30m";
+//    private static final String ANSI_RESET = "\u001B[0m";
+//    private static final String ANSI_CYAN = "\u001B[36m";
+//    private static final String ANSI_PURPLE = "\u001B[35m";
+//    private static final String ANSI_YELLOW = "\u001B[33m";
+//    private static final String ANSI_RED = "\u001B[31m";
+//    private static final String ANSI_BLUE = "\u001B[34m";
+//    private static final String ANSI_GREEN = "\u001B[32m";
+//    private static final String ANSI_WHITE = "\u001B[37m";
+//    private static final String ANSI_BLACK = "\u001B[30m";
     private GameTextArt gameTextArt = new GameTextArt();
     private ArrayList pi = getInventory().getPlyrInv();
     private Recipe recipe = new Recipe();

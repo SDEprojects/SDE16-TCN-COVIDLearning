@@ -1,11 +1,10 @@
 package com.rjmj.capstone.tutorial;
 
-import com.rjmj.capstone.ExceptionMessage;
-import com.rjmj.capstone.character.Color;
+import com.rjmj.capstone.Color;
 
 import java.util.ResourceBundle;
 
-public interface InterfaceTutorial extends ExceptionMessage {
+public interface InterfaceTutorial extends Color {
 
     ///////////////////////// For resource bundle /////////////////////////
     final String PATH = "com.rjmj.capstone.tutorial.files.";

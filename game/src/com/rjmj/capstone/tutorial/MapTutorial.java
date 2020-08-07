@@ -1,8 +1,6 @@
 package com.rjmj.capstone.tutorial;
 
-import com.rjmj.capstone.character.Color;
-
-public class MapTutorial implements Color {
+public class MapTutorial implements InterfaceTutorial {
 
 
     public static void mapDisplay(String currentRoom) {

@@ -1,12 +1,11 @@
 package com.rjmj.capstone.character;
 
-import java.io.IOException;
-import java.util.Locale;
-import java.util.MissingResourceException;
+import com.rjmj.capstone.Color;
+
 import java.util.ResourceBundle;
 
 
-public interface Character extends Color{
+public interface Character extends Color {
 
     int SLEEP_DURATION_MS = 650;
 
@@ -14,13 +13,6 @@ public interface Character extends Color{
     String askTheQuestionAndCollectInput();
 
     String processQuestionAnswer(String questionAnswer);
-
-    public default void somethingWentWrong(Exception e){
-        System.out.println("****** Something went wrong ******");
-        System.out.println("Place: " + getClass().getName());
-        System.out.println("Exception message : " + e.getMessage());
-    }
-
 
     ///////////////////////// For resource bundle /////////////////////////
     final String PATH = "com.rjmj.capstone.character.files.";

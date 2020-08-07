@@ -1,11 +1,10 @@
 package com.rjmj.capstone.room;
 
-import com.rjmj.capstone.character.Color;
 import com.rjmj.capstone.engines.MovementEngine;
 
 import java.util.*;
 
-public class StoryKitchen implements StoryRoom, Color {
+public class StoryKitchen implements StoryRoom {
 
     //// For resource bundle ////
     final String FILE_BASE_NAME = "storyKitchen";

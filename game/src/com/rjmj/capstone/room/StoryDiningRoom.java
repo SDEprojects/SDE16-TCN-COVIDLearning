@@ -1,13 +1,11 @@
 package com.rjmj.capstone.room;
 
-import com.rjmj.capstone.character.Color;
-
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class StoryDiningRoom implements StoryRoom, Color {
+public class StoryDiningRoom implements StoryRoom {
 
     //// For resource bundle ////
     final String FILE_BASE_NAME = "storyDiningRoom";

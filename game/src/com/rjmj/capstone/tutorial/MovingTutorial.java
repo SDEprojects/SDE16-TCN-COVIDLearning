@@ -1,6 +1,5 @@
 package com.rjmj.capstone.tutorial;
 
-import com.rjmj.capstone.character.Color;
 import com.rjmj.capstone.engines.MovementEngine;
 
 import java.util.Locale;
@@ -8,7 +7,7 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class MovingTutorial implements InterfaceTutorial, Color {
+public class MovingTutorial implements InterfaceTutorial {
 
     //// For resource bundle ////
     final String FILE_BASE_NAME = "MovingTutorial";

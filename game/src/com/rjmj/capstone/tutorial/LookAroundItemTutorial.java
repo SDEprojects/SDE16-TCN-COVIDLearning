@@ -1,11 +1,11 @@
 package com.rjmj.capstone.tutorial;
 
-import com.rjmj.capstone.character.Color;
+import com.rjmj.capstone.Color;
 import com.rjmj.capstone.engines.MovementEngine;
 
 import java.util.*;
 
-public class LookAroundItemTutorial implements InterfaceTutorial, Color {
+public class LookAroundItemTutorial implements InterfaceTutorial{
 
     //// For resource bundle ////
     final String FILE_BASE_NAME = "LookAroundItemTutorial";

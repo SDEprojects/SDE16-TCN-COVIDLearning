@@ -1,11 +1,11 @@
 package com.rjmj.capstone.room;
 
-import com.rjmj.capstone.ExceptionMessage;
+import com.rjmj.capstone.Color;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public interface StoryRoom extends ExceptionMessage {
+public interface StoryRoom extends Color {
 
     public void enter(Scanner scanner);
     public String getNextAction();
