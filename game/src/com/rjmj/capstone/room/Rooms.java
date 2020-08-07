@@ -161,46 +161,25 @@ public class Rooms implements StoryRoomResourceBundle {
         if(rm.get("item") != null) {
             //add a check for if the item is a box and you have the key in the inventory to add the time buff to the timer
             if(inventory.getPlyrInv().contains(rm.get("item"))){
-                result = "You already took the " + rm.get("item");
+                result = ANSI_BLUE + "You already took the " + rm.get("item") +"."+ANSI_RESET;
             }
             else if((rm.get("item").equals("Box") && inventory.getPlyrInv().contains("Key"))) {
-                result = ANSI_PURPLE + "You see that the box is locked so you use your key to unlock it\n" +
-                        "this is no ordinary box, you just unlocked Time itself and rolled back 1 minute!" + ANSI_RESET;
+                result = textPainter(bundle.getString("getItemBox"));
                 cd.addTimeBuff();
             }
             else {
                 inventory.setPlyrInv(rm.get("item"));
-                result = "The " + rm.get("item") + ANSI_RESET + " was added to your inventory\n" +
-                        "You now have " + inventory.getPlyrInv().size() + " items in your inventory:";
+                result = ANSI_BLUE + "The "+ANSI_PURPLE+ rm.get("item") + ANSI_BLUE + " was added to your inventory\n" +
+                        "You now have " + inventory.getPlyrInv().size() + " items in your inventory." + ANSI_RESET;
             }
         }
         else {
-            result = "there aren't any items to take in here!";
+            result = textPainter(bundle.getString("noItemToTake")) + ANSI_RESET;
         }
         return result;
     }
 
     public Map<String, Map<String,String>> getROOMS() {
         return ROOMS;
-    }
-
-    /** For accessing and displaying stories in Resource Bundle file */
-    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
-        String msg = null;
-        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
-            try {
-                msg = textPainter(bundle.getString(key + "[" + i + "]"));
-                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
-            }
-            catch (MissingResourceException e) {
-                if (i == 0){
-                    System.out.println("Could not find the key : " + key);
-                }
-                break;
-            }
-            catch (Exception e){
-                somethingWentWrong(e);
-            }
-        }
     }
 }
