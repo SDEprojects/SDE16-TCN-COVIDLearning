@@ -55,7 +55,6 @@ public class John implements Character {
             somethingWentWrong(e);
             System.out.println("Could not find a key : " + ansKey);
         }
-
         return finalResult;
     }
 
@@ -112,11 +111,15 @@ public class John implements Character {
             try {
                 msg = textPainter(bundle.getString(key + "[" + i + "]"));
                 displayStoryLineByLine(msg, SLEEP_DURATION_MS);
-            } catch (MissingResourceException e) {
+            }
+            catch (MissingResourceException e) {
                 if (i == 0){
                     System.out.println("Could not find the key : " + key);
                 }
                 break;
+            }
+            catch(Exception e){
+                somethingWentWrong(e);
             }
         }
     }

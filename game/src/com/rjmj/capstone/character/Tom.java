@@ -113,6 +113,9 @@ public class Tom implements Character {
                 }
                 break;
             }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
         }
     }
 }

@@ -85,26 +85,26 @@ public class Player implements Color {
     public String collectPlayerActionInput(String userInput) {
         //Scanner userInput = new Scanner(System.in);
         //currentLocationDisplay();
-        if(getMoveMsg().length() > 20){
-            System.out.println(getMoveMsg());
-            setMoveMsg("");
-        }
-        if(!getLookAroundMsg().equals("")){
-            System.out.println(getLookAroundMsg());
-            setLookAroundMsg("");
-        }
-        if(getTalkMsg().length() > 9){
-            System.out.println(getTalkMsg());
-            setTalkMsg("");
-        }
-        if(!getTakeItemMsg().equals("")){
-            System.out.println(getTakeItemMsg());
-            setTakeItemMsg("");
-        }
-        if(mixCheck) {
-            winCheck();
-            mixCheck = false;
-        }
+//        if(getMoveMsg().length() > 20){
+//            System.out.println(getMoveMsg());
+//            setMoveMsg("");
+//        }
+//        if(!getLookAroundMsg().equals("")){
+//            System.out.println(getLookAroundMsg());
+//            setLookAroundMsg("");
+//        }
+//        if(getTalkMsg().length() > 9){
+//            System.out.println(getTalkMsg());
+//            setTalkMsg("");
+//        }
+//        if(!getTakeItemMsg().equals("")){
+//            System.out.println(getTakeItemMsg());
+//            setTakeItemMsg("");
+//        }
+//        if(mixCheck) {
+//            winCheck();
+//            mixCheck = false;
+//        }
 //        if (itemsCheck()){
 //            System.out.println(ANSI_PURPLE + "You now have all the items necessary to Mix the vaccine ingredients...you will need to find the recipe now." + ANSI_RESET);
 //            System.out.println("You can do the following actions:" +ANSI_RESET + ANSI_GREEN + "Look Around, " +ANSI_RESET + ANSI_PURPLE + "Talk, " +ANSI_RESET + ANSI_BLUE + "Take Item, " +ANSI_RESET + ANSI_YELLOW + "Move, " +ANSI_RESET + ANSI_WHITE + "Map, " +ANSI_RESET + ANSI_PURPLE + " Mix, " +ANSI_RESET + ANSI_RED + "Exit" + ANSI_RESET);
@@ -124,7 +124,7 @@ public class Player implements Color {
         String command = commandArray[0];
         String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
-        if (command.equalsIgnoreCase("EXIT")) { play(); return; } //if (command.equals("EXIT")) { play(); return; }
+        if (command.equalsIgnoreCase("EXIT")) { play(); return; }
         // MOVE
         if (parser.isMoveSynonym(command))  {
             setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));

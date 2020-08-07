@@ -117,6 +117,9 @@ public class Peter implements Character{
                 }
                 break;
             }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
         }
     }
 }

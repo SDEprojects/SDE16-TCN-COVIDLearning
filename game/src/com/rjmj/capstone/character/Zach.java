@@ -108,6 +108,9 @@ public class Zach implements Character{
                 }
                 break;
             }
+            catch(Exception e){
+                somethingWentWrong(e);
+            }
         }
     }
 }

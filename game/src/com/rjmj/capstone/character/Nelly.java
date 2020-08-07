@@ -66,6 +66,9 @@ public class Nelly implements Character{
                 }
                 break;
             }
+            catch(Exception e){
+                somethingWentWrong(e);
+            }
         }
     }
 }
