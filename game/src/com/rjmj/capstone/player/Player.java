@@ -1,6 +1,5 @@
 package com.rjmj.capstone.player;
 
-import com.rjmj.capstone.Color;
 import com.rjmj.capstone.engine.Parser;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.room.*;
@@ -9,10 +8,15 @@ import com.rjmj.capstone.timer.GameTimer;
 import com.rjmj.capstone.tutorial.Tutorial;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
-public class Player implements Color {
+public class Player implements PlayerResourceBundle {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "player";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
     private String playerName;
     private String playerActionSelection;
     private String playInput;
@@ -31,6 +35,7 @@ public class Player implements Color {
     private String moveMsg = "";
     private boolean mixCheck = false;
     private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
+    private String oldCurrentRoom = null;
 
 
     //public String play() {
@@ -64,7 +69,8 @@ public class Player implements Color {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Error, please try another entry.");
+                readStoryLinesOutOfFile("invalid", 0);
+                //System.out.println("Error, please try another entry.");
                 play();
                 break;
         }
@@ -154,7 +160,8 @@ public class Player implements Color {
             gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
         } else {
             movementEngine.clearScreen();
-            System.out.println("Error, please select a valid item.\n");
+            //System.out.println("Error, please select a valid item.\n");
+            readStoryLinesOutOfFile("invalid", 0);
         }
 
         backToMenu();
@@ -242,10 +249,12 @@ public class Player implements Color {
 
     private void winCheck() {
         if(recipe.isMatch()){
-            System.out.println("That is correct, you just cured yourself!");
+            readStoryLinesOutOfFile("winCheckCorrect", 0);
+            System.out.println(ANSI_RESET);
             gameTextArt.winningArtDisplay();
         } else {
-            System.out.println("That's not the right mixture. Try again.");
+            readStoryLinesOutOfFile("winCheckIncorrect", 0);
+            System.out.println(ANSI_RESET);
             cd.subTimePenalty();
 //            backToMenu();
         }
@@ -258,6 +267,10 @@ public class Player implements Color {
         String currentRoom = movementEngine.getCurrentRoom();
         StoryRoom storyRoom = null;
         String action = null;
+
+        if (itemsCheck()){
+            readStoryLinesOutOfFile("enoughItemsToMix", 0);
+        }
         switch (currentRoom){
             case "DINING ROOM":
                 if (instancesStoryRoom[0] == null){
@@ -290,16 +303,21 @@ public class Player implements Color {
                 break;
 
             default:
-                System.out.println("You are in "+ currentRoom);
-                if (itemsCheck()){
-                    System.out.println(ANSI_PURPLE + "You now have all the items necessary to Mix the vaccine ingredients" + ANSI_RESET);
+                if (!currentRoom.equals(oldCurrentRoom)){
+                    System.out.println("You are in "+ currentRoom);
                 }
                 storyRoom = new StoryDefault();
+
         }
+
+        // Store what room the player was before
+        if (oldCurrentRoom == null){
+            oldCurrentRoom = currentRoom;
+        }
+        oldCurrentRoom = currentRoom;
 
         storyRoom.enter(scanner);
         action = storyRoom.getNextAction();
-        //System.out.println("Action : "+ action);
         parseAvailableActions(collectPlayerActionInput(action));
     }
 
@@ -358,5 +376,25 @@ public class Player implements Color {
 
     public void setMoveMsg(String moveMsg) {
         this.moveMsg = moveMsg;
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            }
+            catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
+        }
     }
 }
