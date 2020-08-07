@@ -22,15 +22,6 @@ public class Player implements Color {
     private Tutorial tutorial = new Tutorial();
     private Countdown cd = new Countdown();
     private GameTimer gameTimer = new GameTimer(); //CB added timer to the game
-//    private static final String ANSI_RESET = "\u001B[0m";
-//    private static final String ANSI_CYAN = "\u001B[36m";
-//    private static final String ANSI_PURPLE = "\u001B[35m";
-//    private static final String ANSI_YELLOW = "\u001B[33m";
-//    private static final String ANSI_RED = "\u001B[31m";
-//    private static final String ANSI_BLUE = "\u001B[34m";
-//    private static final String ANSI_GREEN = "\u001B[32m";
-//    private static final String ANSI_WHITE = "\u001B[37m";
-//    private static final String ANSI_BLACK = "\u001B[30m";
     private GameTextArt gameTextArt = new GameTextArt();
     private ArrayList pi = getInventory().getPlyrInv();
     private Recipe recipe = new Recipe();
@@ -60,9 +51,10 @@ public class Player implements Color {
                 break;
             case "INTRO":
                 gameTextArt.introText();
+                parser = new Parser();
                 //collectPlayerName();
                 play();
-                //backToMenu(); // TODO need to investigate -> At dining room, type action, NullPointer is thrown
+                //backToMenu();
                 break;
             case "TUTORIAL":
                 tutorial.startTutorial();
@@ -154,7 +146,8 @@ public class Player implements Color {
         } else if (command.equals("mix")) {
             movementEngine.clearScreen();
             recipe.setPlayerMix(cd);
-            mixCheck = true;
+            winCheck();
+            //mixCheck = true;
         // MAP
         } else if (command.equals("map")) {
             movementEngine.clearScreen();
@@ -170,53 +163,53 @@ public class Player implements Color {
 
 
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
-    private void availableActions(String input) {
-        Rooms room = new Rooms();
+//    private void availableActions(String input) {
+//        Rooms room = new Rooms();
+//
+//        switch(input) {
+//            case "MOVE":
+//                setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
+//                backToMenu();
+//                break;
+//            case "LOOK AROUND":
+//                setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
+//                backToMenu();
+//                break;
+//            case "TALK":
+//                setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
+//                backToMenu();
+//                break;
+//            case "TAKE ITEM":
+//                movementEngine.clearScreen();
+//                setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
+//                backToMenu();
+//                break;
+//            case "MIX":
+//                movementEngine.clearScreen();
+//                recipe.setPlayerMix(cd);
+//                mixCheck = true;
+//                backToMenu();
+//                break;
+//            case "MAP":
+//                movementEngine.clearScreen();
+//                gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
+//                backToMenu();
+//                break;
+//            case "EXIT":
+//                play();
+//                break;
+//            default:
+//                movementEngine.clearScreen();
+//                System.out.println("Error, please select a valid item.\n");
+//                backToMenu();
+//        }
+//    }
 
-        switch(input) {
-            case "MOVE":
-                setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
-                backToMenu();
-                break;
-            case "LOOK AROUND":
-                setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
-                backToMenu();
-                break;
-            case "TALK":
-                setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
-                backToMenu();
-                break;
-            case "TAKE ITEM":
-                movementEngine.clearScreen();
-                setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
-                backToMenu();
-                break;
-            case "MIX":
-                movementEngine.clearScreen();
-                recipe.setPlayerMix(cd);
-                mixCheck = true;
-                backToMenu();
-                break;
-            case "MAP":
-                movementEngine.clearScreen();
-                gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
-                backToMenu();
-                break;
-            case "EXIT":
-                play();
-                break;
-            default:
-                movementEngine.clearScreen();
-                System.out.println("Error, please select a valid item.\n");
-                backToMenu();
-        }
-    }
-
-    public static void clr() {
-        for(int i = 0; i < 50; i++) {
-            System.out.println("\b");
-        }
-    }
+//    public static void clr() {
+//        for(int i = 0; i < 50; i++) {
+//            System.out.println("\b");
+//        }
+//    }
 
     //[Syringe, Blue Liquid, Plunger, Key, Red Liquid, Box, Beaker, Green Liquid, Recipe, Needle]
     private void currentLocationDisplay() {

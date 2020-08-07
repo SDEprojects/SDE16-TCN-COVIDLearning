@@ -9,10 +9,6 @@ import java.util.List;
 
 public class Recipe implements Color {
     public static List<ColorEnum> colorEnumMixes = new ArrayList(3);
-//    private static final String ANSI_RED = "\u001B[31m";
-//    private static final String ANSI_BLUE = "\u001B[34m";
-//    private static final String ANSI_GREEN = "\u001B[32m";
-//    public static final String ANSI_RESET = "\u001B[0m";
     private List<ColorEnum> playerMix = new ArrayList(3);
     private final ColorEnum[] clrEnum = {ColorEnum.RED, ColorEnum.BLUE, ColorEnum.GREEN};
     private boolean isMatch = false;

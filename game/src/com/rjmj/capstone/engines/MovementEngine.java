@@ -38,10 +38,6 @@ public class MovementEngine {
                 sb.append(" UP: " + up + ",");
             }
         }
-//        TODO: Trailing Comma doesn't come off!!! Tried the two following ways :(
-//        sb.toString().replaceAll(",$", "");
-//        sb.toString().substring(0, sb.toString().length() - 1);
-
         sb.append(" )");
         return sb.toString();
 

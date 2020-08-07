@@ -21,7 +21,7 @@ public class StoryDiningRoom implements StoryRoom {
         this.scanner = scanner;
         if (firstVisit) diningIntro();
         firstVisit = false;
-        System.out.println("What would you like to do");
+        readStoryLinesOutOfFile("WhatYouWant", 0);
         freeAns();
 
     }

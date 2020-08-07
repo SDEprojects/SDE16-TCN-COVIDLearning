@@ -11,10 +11,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class Rooms implements Color {
-//    public static final String ANSI_GREEN = "\u001B[32m";
-//    public static final String ANSI_CYAN = "\u001B[36m";
-//    public static final String ANSI_RESET = "\u001B[0m";
-//    public static final String ANSI_PURPLE = "\u001B[35m";
 
     private Map<String,Map<String,String>> ROOMS = Map.ofEntries(
             entry("DINING ROOM", Map.of(
@@ -50,7 +46,7 @@ public class Rooms implements Color {
                     "right", "Stairs")),
             entry("BEDROOM", Map.of(
                     "room", "Bedroom",
-                    "item", ANSI_GREEN + "Green Liquid" + ANSI_CYAN,
+                    "item", ANSI_GREEN + "Green Liquid" + ANSI_RESET,
                     "left", "Library",
                     "right", "Down Stairs Hall")),
             entry("LIBRARY", Map.of(

@@ -12,8 +12,6 @@ public class LookAroundItemTutorial implements InterfaceTutorial{
     ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
     ////////////////////////////
 
-    //{0}:ANSI_CYAN, {1}:ANSI_RED, {2}:ANSI_BLUE, {3}:ANSI_RESET
-
     private MovementEngine movementEngine = new MovementEngine();
     private Scanner userInput = new Scanner(System.in);
     private String playerLocation = "HALL";
@@ -22,9 +20,6 @@ public class LookAroundItemTutorial implements InterfaceTutorial{
     private List<String> hallInventory = new ArrayList<>();
     private List<String> ballRoomInventory = new ArrayList<>();
     private List<String> movieRoomInventory = new ArrayList<>();
-    private final String ANSI_RESET = "\u001B[0m";
-    private final String ANSI_CYAN = "\u001B[36m";
-    private final String ANSI_RED = "\u001B[31m";
     private TutorialParser tutorialParser = new TutorialParser();
 
 

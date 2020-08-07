@@ -35,8 +35,8 @@ public class Inventory {
                             inventory.setPlyrInv(tom.getItem());
                             item = "Tom has given you " + tom.getItem();
                         }
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory, cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Jay":
@@ -46,8 +46,8 @@ public class Inventory {
                             inventory.setPlyrInv(jay.getItem());
                             item = "Jay has given you " + jay.getItem();
                         }
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory, cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "John":
@@ -60,8 +60,8 @@ public class Inventory {
                                 cd.addTimeBuff();
                             }
                         }
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory, cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Peter":
@@ -70,8 +70,8 @@ public class Inventory {
                         item = "\nPeter has granted you access to the Library " +
                                 "and there is a secret CAVE behind the bookshelves!!!\n" +
                                 "and a Lab behind another set of books.";
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory,cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory,cd);
                     }
                     break;
                 case "Zach":
@@ -81,8 +81,8 @@ public class Inventory {
                             inventory.setPlyrInv(zach.getItem());
                             item = Recipe.recipeArt();
                         }
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory, cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Nelly":
@@ -91,8 +91,8 @@ public class Inventory {
                         if (!inventory.getPlyrInv().contains(item)) {
                             inventory.setPlyrInv(item);
                         }
-                    } else {
-                        talkToCharacter(room, currentRoom, inventory,cd);
+//                    } else {
+//                        talkToCharacter(room, currentRoom, inventory,cd);
                     }
                     break;
             }

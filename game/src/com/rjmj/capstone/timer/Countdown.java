@@ -10,8 +10,6 @@ public class Countdown implements Color {
     private long delay = 1000; //milliseconds
     private final Timer timer = new Timer();
     private long timeLeft = 600000;
-//    public static final String ANSI_PURPLE = "\u001B[35m";
-//    public static final String ANSI_RESET = "\u001B[0m";
 
     public void addTimeBuff(){
         setTimeLeft(getTimeLeft() + getTimeBuff());
