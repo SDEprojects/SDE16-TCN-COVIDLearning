@@ -2,9 +2,8 @@ package com.rjmj.capstone.room;
 
 import com.rjmj.capstone.ExceptionMessage;
 import com.rjmj.capstone.engines.MovementEngine;
-import com.rjmj.capstone.player.Color;
+import com.rjmj.capstone.player.ColorEnum;
 import com.rjmj.capstone.player.Recipe;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -203,8 +202,8 @@ public class GameTextArt implements ExceptionMessage {
     public void recipeArt(Recipe recipe) {
         System.out.println("Zach has given you the recipe to mix the vaccine!");
         List<String> arr = new ArrayList<>();
-        for(Color color : recipe.getColorMix()){
-            String clr = color.toString().toUpperCase();
+        for(ColorEnum colorEnum : recipe.getColorEnumMixes()){
+            String clr = colorEnum.toString().toUpperCase();
             if(clr.equals("RED")){
                 clr = "RED ";
                 arr.add(clr);

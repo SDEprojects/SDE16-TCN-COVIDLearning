@@ -7,20 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
-    public static List<Color> colorMix = new ArrayList(3);
+    public static List<ColorEnum> colorEnumMixes = new ArrayList(3);
     private static final String ANSI_RED = "\u001B[31m";
     private static final String ANSI_BLUE = "\u001B[34m";
     private static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
-    private List<Color> playerMix = new ArrayList(3);
-    private final Color[] clrEnum = {Color.RED, Color.BLUE, Color.GREEN};
+    private List<ColorEnum> playerMix = new ArrayList(3);
+    private final ColorEnum[] clrEnum = {ColorEnum.RED, ColorEnum.BLUE, ColorEnum.GREEN};
     private boolean isMatch = false;
 
     public void mixRandomRecipe(){
-        while(colorMix.size() < 3){
-            Color ranColor = clrEnum[(getRandom())];
-            if(!colorMix.contains(ranColor)){
-                colorMix.add(ranColor);
+        while(colorEnumMixes.size() < 3){
+            ColorEnum ranColorEnum = clrEnum[(getRandom())];
+            if(!colorEnumMixes.contains(ranColorEnum)){
+                colorEnumMixes.add(ranColorEnum);
             }
         }
     }
@@ -33,13 +33,13 @@ public class Recipe {
             String q = "Enter ingredient number " + count +" , choose from: (RED,BLUE,GREEN)";
             String choice = input.getInput(q).toUpperCase();
             if(choice.startsWith("R")){
-                playerMix.add(Color.RED);
+                playerMix.add(ColorEnum.RED);
             }
             else if(choice.startsWith("B")){
-                playerMix.add(Color.BLUE);
+                playerMix.add(ColorEnum.BLUE);
             }
             else if(choice.startsWith("G")){
-                playerMix.add(Color.GREEN);
+                playerMix.add(ColorEnum.GREEN);
             }
             else {
                 System.out.println("Invalid ingredient, please try again.");
@@ -50,10 +50,10 @@ public class Recipe {
         setMatch(isRecipeMatch(getPlayerMix()));
     }
 
-    public boolean isRecipeMatch(List<Color> formula){
+    public boolean isRecipeMatch(List<ColorEnum> formula){
         boolean result = false;
-        for(int i = 0; i < colorMix.size(); i++) {
-            if (!formula.get(i).equals(getColorMix().get(i))) {
+        for(int i = 0; i < colorEnumMixes.size(); i++) {
+            if (!formula.get(i).equals(getColorEnumMixes().get(i))) {
                 playerMix = new ArrayList(3);
                 return false;
             } else {
@@ -65,8 +65,8 @@ public class Recipe {
 
     public static String recipeArt() {
         List<String> arr = new ArrayList<>();
-        for(Color color : getColorMix()){
-            String clr = color.toString().toUpperCase();
+        for(ColorEnum colorEnum : getColorEnumMixes()){
+            String clr = colorEnum.toString().toUpperCase();
             if(clr.equals("RED")){
                 clr = ANSI_RED + "RED" + ANSI_RESET + "~~";
             }
@@ -96,11 +96,11 @@ public class Recipe {
         return (int) (0 + Math.floor((Math.random() * 3)));
     }
 
-    public static List<Color> getColorMix() {
-        return colorMix;
+    public static List<ColorEnum> getColorEnumMixes() {
+        return colorEnumMixes;
     }
 
-    public List<Color> getPlayerMix() {
+    public List<ColorEnum> getPlayerMix() {
         return playerMix;
     }
 
