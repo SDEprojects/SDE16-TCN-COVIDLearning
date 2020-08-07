@@ -1,13 +1,17 @@
 package com.rjmj.capstone.player;
 
-import com.rjmj.capstone.Color;
 import com.rjmj.capstone.engine.UserInput;
 import com.rjmj.capstone.timer.Countdown;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Recipe implements Color {
+public class Recipe implements PlayerResourceBundle {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "recipe";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
     public static List<ColorEnum> colorEnumMixes = new ArrayList(3);
     private List<ColorEnum> playerMix = new ArrayList(3);
     private final ColorEnum[] clrEnum = {ColorEnum.RED, ColorEnum.BLUE, ColorEnum.GREEN};
@@ -25,7 +29,7 @@ public class Recipe implements Color {
     public void setPlayerMix(Countdown cd) {
         int count = 1;
         UserInput input = new UserInput();
-        System.out.println("The recipe needs to be mixed in a specific order.\nEach ingredient is only used once.\n");
+        readStoryLinesOutOfFile("mixIntro", 0);
         while(playerMix.size() < 3){
             String q = "Enter ingredient number " + count +" , choose from: (RED,BLUE,GREEN)";
             String choice = input.getInput(q).toUpperCase();
@@ -39,7 +43,7 @@ public class Recipe implements Color {
                 playerMix.add(ColorEnum.GREEN);
             }
             else {
-                System.out.println("Invalid ingredient, please try again.");
+                readStoryLinesOutOfFile("invalid", 0);
                 continue;
             }
             count++;
@@ -107,5 +111,25 @@ public class Recipe implements Color {
 
     public void setMatch(boolean match) {
         isMatch = match;
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            }
+            catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
+        }
     }
 }

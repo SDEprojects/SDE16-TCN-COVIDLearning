@@ -1,12 +1,15 @@
 package com.rjmj.capstone.timer;
 
-import com.rjmj.capstone.Color;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class Countdown implements Color {
+public class Countdown implements TimerResourceBundle {
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "countdown";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
     private long delay = 1000; //milliseconds
     private final Timer timer = new Timer();
     private long timeLeft = 600000;
@@ -15,7 +18,8 @@ public class Countdown implements Color {
         setTimeLeft(getTimeLeft() + getTimeBuff());
     }
     public void subTimePenalty() {
-        System.out.println("You mixed the vaccine in the wrong order, 1 minute has been subtracted from your time left.");
+        readStoryLinesOutOfFile("mixture", 0);
+        //System.out.println("You mixed the vaccine in the wrong order, 1 minute has been subtracted from your time left.");
         setTimeLeft(getTimeLeft() + getTimePenalty());
     }
 
@@ -28,7 +32,8 @@ public class Countdown implements Color {
             public void run() {
                 updateTimeLeft();
                 if (getTimeLeft() <= 0) {
-                    System.out.println("Game Over, times up your are dead");
+                    readStoryLinesOutOfFile("timeup", 0);
+                    //System.out.println("Game Over, times up your are dead");
                     timer.cancel();
                     System.exit(1);
                 }
@@ -75,5 +80,24 @@ public class Countdown implements Color {
     public long getTimePenalty() {
         long timePenalty = -60000;
         return timePenalty;
+    }
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            }
+            catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
+        }
     }
 }
