@@ -1,7 +1,5 @@
 package com.rjmj.capstone.room;
 
-import com.rjmj.capstone.Color;
-import com.rjmj.capstone.engine.UserInput;
 import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.player.ColorEnum;
 import com.rjmj.capstone.player.Recipe;

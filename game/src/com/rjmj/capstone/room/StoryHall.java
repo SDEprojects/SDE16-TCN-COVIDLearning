@@ -1,9 +1,6 @@
 package com.rjmj.capstone.room;
 
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
 public class StoryHall implements StoryRoom {
 

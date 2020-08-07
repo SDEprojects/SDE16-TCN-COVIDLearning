@@ -7,7 +7,6 @@ import com.rjmj.capstone.timer.Countdown;
 import com.rjmj.capstone.timer.GameTimer;
 import com.rjmj.capstone.tutorial.Tutorial;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Player implements PlayerResourceBundle {
@@ -37,8 +36,6 @@ public class Player implements PlayerResourceBundle {
     private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
     private String oldCurrentRoom = null;
 
-
-    //public String play() {
     public void play() {
         Scanner userInput = new Scanner(System.in);
         gameTextArt.introArt();
@@ -57,9 +54,7 @@ public class Player implements PlayerResourceBundle {
             case "INTRO":
                 gameTextArt.introText();
                 parser = new Parser();
-                //collectPlayerName();
                 play();
-                //backToMenu();
                 break;
             case "TUTORIAL":
                 tutorial.startTutorial();
@@ -70,7 +65,6 @@ public class Player implements PlayerResourceBundle {
                 break;
             default:
                 readStoryLinesOutOfFile("invalid", 0);
-                //System.out.println("Error, please try another entry.");
                 play();
                 break;
         }
@@ -89,35 +83,6 @@ public class Player implements PlayerResourceBundle {
     }
 
     public String collectPlayerActionInput(String userInput) {
-        //Scanner userInput = new Scanner(System.in);
-        //currentLocationDisplay();
-//        if(getMoveMsg().length() > 20){
-//            System.out.println(getMoveMsg());
-//            setMoveMsg("");
-//        }
-//        if(!getLookAroundMsg().equals("")){
-//            System.out.println(getLookAroundMsg());
-//            setLookAroundMsg("");
-//        }
-//        if(getTalkMsg().length() > 9){
-//            System.out.println(getTalkMsg());
-//            setTalkMsg("");
-//        }
-//        if(!getTakeItemMsg().equals("")){
-//            System.out.println(getTakeItemMsg());
-//            setTakeItemMsg("");
-//        }
-//        if(mixCheck) {
-//            winCheck();
-//            mixCheck = false;
-//        }
-//        if (itemsCheck()){
-//            System.out.println(ANSI_PURPLE + "You now have all the items necessary to Mix the vaccine ingredients...you will need to find the recipe now." + ANSI_RESET);
-//            System.out.println("You can do the following actions:" +ANSI_RESET + ANSI_GREEN + "Look Around, " +ANSI_RESET + ANSI_PURPLE + "Talk, " +ANSI_RESET + ANSI_BLUE + "Take Item, " +ANSI_RESET + ANSI_YELLOW + "Move, " +ANSI_RESET + ANSI_WHITE + "Map, " +ANSI_RESET + ANSI_PURPLE + " Mix, " +ANSI_RESET + ANSI_RED + "Exit" + ANSI_RESET);
-//        } else {
-//            System.out.println(ANSI_CYAN + "You can do the following actions:" +ANSI_RESET + ANSI_GREEN + "Look Around, " +ANSI_RESET + ANSI_PURPLE + "Talk, " +ANSI_RESET + ANSI_BLUE + "Take Item, " +ANSI_RESET + ANSI_YELLOW + "Move, " +ANSI_RESET + ANSI_WHITE + "Map, " +ANSI_RESET + ANSI_RED + "Exit" +ANSI_RESET);
-//        }
-        //setPlayerActionSelection(userInput.nextLine().toUpperCase());
         setPlayerActionSelection(userInput.toUpperCase());
         return getPlayerActionSelection();
     }
@@ -160,63 +125,11 @@ public class Player implements PlayerResourceBundle {
             gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
         } else {
             movementEngine.clearScreen();
-            //System.out.println("Error, please select a valid item.\n");
             readStoryLinesOutOfFile("invalid", 0);
         }
 
         backToMenu();
     }
-
-
-
-    // availableActions() will prompt the player with a list of actions they can choose, based on current room.
-//    private void availableActions(String input) {
-//        Rooms room = new Rooms();
-//
-//        switch(input) {
-//            case "MOVE":
-//                setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
-//                backToMenu();
-//                break;
-//            case "LOOK AROUND":
-//                setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
-//                backToMenu();
-//                break;
-//            case "TALK":
-//                setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
-//                backToMenu();
-//                break;
-//            case "TAKE ITEM":
-//                movementEngine.clearScreen();
-//                setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));;
-//                backToMenu();
-//                break;
-//            case "MIX":
-//                movementEngine.clearScreen();
-//                recipe.setPlayerMix(cd);
-//                mixCheck = true;
-//                backToMenu();
-//                break;
-//            case "MAP":
-//                movementEngine.clearScreen();
-//                gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
-//                backToMenu();
-//                break;
-//            case "EXIT":
-//                play();
-//                break;
-//            default:
-//                movementEngine.clearScreen();
-//                System.out.println("Error, please select a valid item.\n");
-//                backToMenu();
-//        }
-//    }
-
-//    public static void clr() {
-//        for(int i = 0; i < 50; i++) {
-//            System.out.println("\b");
-//        }
-//    }
 
     //[Syringe, Blue Liquid, Plunger, Key, Red Liquid, Box, Beaker, Green Liquid, Recipe, Needle]
     private void currentLocationDisplay() {
@@ -256,7 +169,6 @@ public class Player implements PlayerResourceBundle {
             readStoryLinesOutOfFile("winCheckIncorrect", 0);
             System.out.println(ANSI_RESET);
             cd.subTimePenalty();
-//            backToMenu();
         }
     }
 
@@ -303,12 +215,16 @@ public class Player implements PlayerResourceBundle {
                 break;
 
             default:
-                if (!currentRoom.equals(oldCurrentRoom)){
-                    System.out.println("You are in "+ currentRoom);
-                }
                 storyRoom = new StoryDefault();
-
         }
+
+        // Display CurrentRoom, Time, Possession
+        if (!currentRoom.equals(oldCurrentRoom)) {
+            storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+        }
+
+        storyRoom.enter(scanner);
+        action = storyRoom.getNextAction();
 
         // Store what room the player was before
         if (oldCurrentRoom == null){
@@ -316,8 +232,7 @@ public class Player implements PlayerResourceBundle {
         }
         oldCurrentRoom = currentRoom;
 
-        storyRoom.enter(scanner);
-        action = storyRoom.getNextAction();
+        // Process the action set by StoryRoom classes
         parseAvailableActions(collectPlayerActionInput(action));
     }
 
@@ -332,14 +247,6 @@ public class Player implements PlayerResourceBundle {
 
     public Inventory getInventory() {
         return inventory;
-    }
-
-    public String getPlayInput() {
-        return playInput;
-    }
-
-    public void setPlayInput(String playInput) {
-        this.playInput = playInput;
     }
 
     public void setPlayerActionSelection(String playerActionSelection) {
@@ -368,10 +275,6 @@ public class Player implements PlayerResourceBundle {
 
     public void setTakeItemMsg(String takeItemMsg) {
         this.takeItemMsg = takeItemMsg;
-    }
-
-    public String getMoveMsg() {
-        return moveMsg;
     }
 
     public void setMoveMsg(String moveMsg) {
