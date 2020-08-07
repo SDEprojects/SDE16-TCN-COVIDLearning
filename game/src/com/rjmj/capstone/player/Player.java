@@ -299,7 +299,7 @@ public class Player implements Color {
 
         storyRoom.enter(scanner);
         action = storyRoom.getNextAction();
-        System.out.println("Action : "+ action);
+        //System.out.println("Action : "+ action);
         parseAvailableActions(collectPlayerActionInput(action));
     }
 
