@@ -236,8 +236,8 @@ public class Player implements Color {
     }
 
     private boolean itemsCheck(){
-        return (pi.contains(ANSI_RED +"Red Liquid" + ANSI_CYAN) && pi.contains(ANSI_BLUE + "Blue Liquid" + ANSI_CYAN)
-                && pi.contains(ANSI_GREEN + "Green Liquid" + ANSI_CYAN) && pi.contains("Beaker"));
+        return (pi.contains(ANSI_RED +"Red Liquid" + ANSI_RESET) && pi.contains(ANSI_BLUE + "Blue Liquid" + ANSI_RESET)
+                && pi.contains(ANSI_GREEN + "Green Liquid" + ANSI_RESET) && pi.contains("Beaker"));
     }
 
     private void winCheck() {
