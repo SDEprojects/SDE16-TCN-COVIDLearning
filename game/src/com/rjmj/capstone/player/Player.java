@@ -120,11 +120,11 @@ public class Player implements Color {
     // availableActions() will prompt the player with a list of actions they can choose, based on current room.
     public void parseAvailableActions(String input) {
         Rooms room = new Rooms();
+        
         String[] commandArray = input.toLowerCase().split("\\s+", 2);
         String command = commandArray[0];
         String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
-        if (command.equalsIgnoreCase("EXIT")) { play(); return; }
         // MOVE
         if (parser.isMoveSynonym(command))  {
             setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));
