@@ -63,6 +63,7 @@ public class MovementEngine implements PlayerResourceBundle {
             result = inventory.talkToCharacter(getRoom(),"LIBRARY",inventory,cd);// force talking to Peter when going into Library
             if (result.equals("")){
                 System.out.println(ANSI_PURPLE + "Peter sent you back to the BEDROOM." + ANSI_RESET);
+                System.out.println(ANSI_PURPLE + "You are in BEDROOM now." + ANSI_RESET);
                 setCurrentRoom("BEDROOM");
             }
             else {

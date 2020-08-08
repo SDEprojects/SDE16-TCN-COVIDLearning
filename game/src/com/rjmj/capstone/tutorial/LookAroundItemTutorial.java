@@ -77,7 +77,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial{
                 if (hallInventory.contains("MacBook Pro")) {
                     readStoryLinesOutOfFile("hallRoomEngineIntroLookAround", DELAY);
                 } else {
-                    readStoryLinesOutOfFile("seeNothing", DELAY);
+                    readStoryLinesOutOfFile("hallRoomEngineIntroLookAround_noItem", DELAY);
                 }
                 lookAroundEngine();
                 break;
@@ -134,7 +134,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial{
                     if (ballRoomInventory.contains("Ultrawide Monitor")) {
                         readStoryLinesOutOfFile("ballRoomEngineIntroLookAround", DELAY);
                     } else {
-                        readStoryLinesOutOfFile("seeNothing", DELAY);
+                        readStoryLinesOutOfFile("ballRoomEngineIntroLookAround_noItem", DELAY);
                     }
                     lookAroundEngine();
                     break;
@@ -186,7 +186,7 @@ public class LookAroundItemTutorial implements InterfaceTutorial{
                     readStoryLinesOutOfFile("movieRoomEngineIntroLookAround", DELAY);
                 }
                 else {
-                    readStoryLinesOutOfFile("seeNothing", DELAY);
+                    readStoryLinesOutOfFile("movieRoomEngineIntroLookAround_noItem", DELAY);
                 }
                 lookAroundEngine();
                 break;

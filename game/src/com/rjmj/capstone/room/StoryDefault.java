@@ -12,7 +12,6 @@ public class StoryDefault implements StoryRoom{
     public void enter(Scanner scanner) {
         this.scanner = scanner;
         System.out.println("\nWhat would you like to do?");
-        System.out.println("You can type \"look around\" to see what you can find in the room.");
         freeAns();
     }
 

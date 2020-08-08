@@ -16,11 +16,16 @@ public class StoryDiningRoom implements StoryRoom {
     @Override
     public void enter(Scanner scanner) {
         this.scanner = scanner;
-        if (firstVisit) diningIntro();
-        firstVisit = false;
-        readStoryLinesOutOfFile("WhatYouWant", 0);
-        freeAns();
 
+        if (firstVisit) {
+            diningIntro();
+        }
+        readStoryLinesOutOfFile("WhatYouWant", 0);
+        if (firstVisit) {
+            readStoryLinesOutOfFile("NotSureWhat", 0);
+        }
+        firstVisit = false;
+        freeAns();
     }
 
     private void freeAns(){

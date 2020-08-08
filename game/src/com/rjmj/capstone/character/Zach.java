@@ -45,11 +45,11 @@ public class Zach implements Character{
         try{
             answer = bundle.getString(ansKey);
             if (questionAnswer.equalsIgnoreCase(answer)){
-                System.out.println("\nCorrect");
+                System.out.println("\nCorrect.");
                 finalResult = true;
             }
             else{
-                System.out.println("\nIncorrect, please try again.");
+                System.out.println("\nIncorrect.");
             }
         }
         catch(MissingResourceException e){
@@ -75,10 +75,10 @@ public class Zach implements Character{
     public String processQuestionAnswer(String questionAnswer) {
         String result = "";
         if (questionAnswer.toUpperCase().equals("A")) {
-            System.out.println("\nCorrect");
+            System.out.println("\nCorrect.");
             result = getItem();
         } else {
-            System.out.println("\nIncorrect, please try again.");
+            System.out.println("\nIncorrect.");
         }
         return result;
     }

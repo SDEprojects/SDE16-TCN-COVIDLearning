@@ -36,6 +36,7 @@ public class Player implements PlayerResourceBundle {
     private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
     private boolean[] flagAccessingSecondTime = new boolean[3]; // 0:DINING_ROOM, 1:HALL, 2:KITCHEN
     private String oldCurrentRoom = null;
+    private int countInvalidSelectionParser = 0;
 
     public void play() {
         Scanner userInput = new Scanner(System.in);
@@ -78,6 +79,9 @@ public class Player implements PlayerResourceBundle {
         this.playerName = userInput.nextLine();
         movementEngine.clearScreen();
         System.out.println(ANSI_PURPLE + "Username has been set to: " + ANSI_RESET + ANSI_RED + getPlayerName() + ANSI_RESET);
+        System.out.println(">>Press \"enter\" or \"return\" to continue.");
+        userInput.nextLine();
+        movementEngine.clearScreen();
         cd.startTimer();
         recipe.mixRandomRecipe();
         cd.resetTimerNewGame();
@@ -99,38 +103,60 @@ public class Player implements PlayerResourceBundle {
         if (command.equalsIgnoreCase("EXIT")) { play(); return; }
         // MOVE
         if (parser.isMoveSynonym(command))  {
+            countInvalidSelectionParser = 0;
             setMoveMsg(movementEngine.changeRoom(getInventory(), argument, cd));
             // OLD VERSION - setMoveMsg(movementEngine.changeRoom(getInventory(), movementEngine.roomChoices(),cd));
         // LOOK AROUND
         } else if (parser.isSearchSynonym(command)) {
+            countInvalidSelectionParser = 0;
             setLookAroundMsg(room.lookAround(movementEngine.getCurrentRoom(), getInventory()));
             System.out.println(getLookAroundMsg());
         // TALK
         } else if (parser.isTalkSynonym(command)) {
+            countInvalidSelectionParser = 0;
             setTalkMsg(getInventory().talkToCharacter(room, movementEngine.getCurrentRoom(), getInventory(),cd));
             System.out.println(getTalkMsg());
         // TAKE ITEM
         } else if (parser.isTakeSynonym(command)) {
+            countInvalidSelectionParser = 0;
             movementEngine.clearScreen();
             setTakeItemMsg(room.getItem(getInventory(), movementEngine.getCurrentRoom(), cd));
             System.out.println(getTakeItemMsg());
         // MIX
-        } else if (command.equals("mix")) {
+        } else if (command.equalsIgnoreCase("mix")) {
+            countInvalidSelectionParser = 0;
             movementEngine.clearScreen();
             recipe.setPlayerMix(cd);
             winCheck();
             //mixCheck = true;
         // MAP
-        } else if (command.equals("map")) {
+        } else if (command.equalsIgnoreCase("map")) {
+            countInvalidSelectionParser = 0;
             movementEngine.clearScreen();
             gameTextArt.mapDisplay(movementEngine.getCurrentRoom());
-        } else {
+        } else if ((command.equalsIgnoreCase("hint")) || (command.equalsIgnoreCase("help"))){
+            countInvalidSelectionParser = 0;
+            movementEngine.clearScreen();
+            showHelp();
+            movementEngine.clearScreen();
+        }
+        else {
             movementEngine.clearScreen();
             readStoryLinesOutOfFile("invalid", 0);
+            countInvalidSelectionParser++;
+            if (countInvalidSelectionParser > 2){
+                readStoryLinesOutOfFile("ifYouNeedHelp", 0);
+            }
         }
 
         backToMenu();
     }
+    private void showHelp(){
+        Scanner userInput = new Scanner(System.in);
+        readStoryLinesOutOfFile("helpParser", 0);
+        userInput.nextLine();
+    }
+
 
     //[Syringe, Blue Liquid, Plunger, Key, Red Liquid, Box, Beaker, Green Liquid, Recipe, Needle]
     private void currentLocationDisplay() {
@@ -175,7 +201,7 @@ public class Player implements PlayerResourceBundle {
 
     private void backToMenu() {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
         String currentRoom = movementEngine.getCurrentRoom();
         StoryRoom storyRoom = null;
@@ -242,7 +268,7 @@ public class Player implements PlayerResourceBundle {
         }
 
         // Execute the class for the room
-        storyRoom.enter(scanner);
+        storyRoom.enter(userInput);
         action = storyRoom.getNextAction();
 
         // Store what room the player was before
