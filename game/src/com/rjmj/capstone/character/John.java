@@ -44,11 +44,11 @@ public class John implements Character {
         try{
             answer = bundle.getString(ansKey);
             if (questionAnswer.equalsIgnoreCase(answer)){
-                System.out.println("Correct");
+                System.out.println("\nCorrect");
                 finalResult = true;
             }
             else{
-                System.out.println("Incorrect, please try again.");
+                System.out.println("\nIncorrect, please try again.");
             }
         }
         catch(MissingResourceException e){
@@ -77,11 +77,11 @@ public class John implements Character {
         try{
             answer = bundle.getString(ansKey);
             if (questionAnswer.equalsIgnoreCase(answer)){
-                System.out.println("Correct");
+                System.out.println("\nCorrect");
                 result = getItem();
             }
             else{
-                System.out.println("Incorrect, please try again.");
+                System.out.println("\nIncorrect, please try again.");
             }
         }
         catch(MissingResourceException e){

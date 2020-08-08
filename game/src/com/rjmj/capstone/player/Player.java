@@ -34,6 +34,7 @@ public class Player implements PlayerResourceBundle {
     private String moveMsg = "";
     private boolean mixCheck = false;
     private StoryRoom[] instancesStoryRoom = new StoryRoom[3];
+    private boolean[] flagAccessingSecondTime = new boolean[3]; // 0:DINING_ROOM, 1:HALL, 2:KITCHEN
     private String oldCurrentRoom = null;
 
     public void play() {
@@ -191,6 +192,7 @@ public class Player implements PlayerResourceBundle {
                 }
                 else{
                     storyRoom = instancesStoryRoom[0];
+                    flagAccessingSecondTime[0] = true;
                 }
                 break;
 
@@ -201,6 +203,7 @@ public class Player implements PlayerResourceBundle {
                 }
                 else{
                     storyRoom = instancesStoryRoom[1];
+                    flagAccessingSecondTime[1] = true;
                 }
                 break;
 
@@ -211,16 +214,28 @@ public class Player implements PlayerResourceBundle {
                 }
                 else{
                     storyRoom = instancesStoryRoom[2];
+                    flagAccessingSecondTime[2] = true;
                 }
                 break;
 
             default:
                 storyRoom = new StoryDefault();
+
         }
 
-        // Display CurrentRoom, Time, Possession
-        if (!currentRoom.equals(oldCurrentRoom)) {
-            storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+        // Current room location, Possession, time only show when a player moves from different room
+        if ((currentRoom.equals("DINING ROOM"))||(currentRoom.equals("HALL"))||(currentRoom.equals("KITCHEN"))){
+            if (!currentRoom.equals(oldCurrentRoom)
+            && ((currentRoom.equals("DINING ROOM"))&&(flagAccessingSecondTime[0])
+            || (currentRoom.equals("HALL"))&&(flagAccessingSecondTime[1])
+            || (currentRoom.equals("KITCHEN"))&&(flagAccessingSecondTime[2]))){
+                storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+            }
+        }
+        else {
+            if (!currentRoom.equals(oldCurrentRoom)) {
+                storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+            }
         }
 
         storyRoom.enter(scanner);
