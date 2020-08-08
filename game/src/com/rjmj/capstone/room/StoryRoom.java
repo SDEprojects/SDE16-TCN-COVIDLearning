@@ -8,15 +8,17 @@ public interface StoryRoom extends StoryRoomResourceBundle {
     public default void displayMessageOnlyFirstTimeComingFromDifferentRoom(String currentRoom, ArrayList pi, String displayTimeInsideArt){
 
         switch(currentRoom) {
-            case "BATHROOM":
-                System.out.println(GameTextArt.bathroomDisplay());
-                break;
-            case "KITCHEN":
-                System.out.println(GameTextArt.kitchenDisplay());
-                break;
-            case "LAB":
-                System.out.println(GameTextArt.labDisplay());
-                break;
+            case "DINING ROOM": System.out.println(GameTextArt.diningRoomDisplay()); break;
+            case "HALL": System.out.println(GameTextArt.hallwaysDisplay()); break;
+            case "KITCHEN": System.out.println(GameTextArt.kitchenDisplay()); break;
+            case "BATHROOM": System.out.println(GameTextArt.bathroomDisplay()); break;
+            case "MOVIE ROOM": System.out.println(GameTextArt.movieRoomDisplay()); break;
+            case "STAIRS": System.out.println(GameTextArt.stairsDisplay()); break;
+            case "DOWN STAIRS HALL": System.out.println(GameTextArt.downstairsDisplay()); break;
+            case "BEDROOM": System.out.println(GameTextArt.bedroomDisplay()); break;
+            case "LIBRARY": System.out.println(GameTextArt.libraryDisplay()); break;
+            case "CAVE": System.out.println(GameTextArt.caveDisplay()); break;
+            case "LAB": System.out.println(GameTextArt.labDisplay()); break;
         }
 
         System.out.println(ANSI_WHITE+"\n******************************");
