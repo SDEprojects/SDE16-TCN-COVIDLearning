@@ -181,9 +181,12 @@ public class Player implements PlayerResourceBundle {
         StoryRoom storyRoom = null;
         String action = null;
 
-        if (itemsCheck()){
+        // Show a message for mixture
+        if ((itemsCheck()) && currentRoom.equals(oldCurrentRoom)){
             readStoryLinesOutOfFile("enoughItemsToMix", 0);
         }
+
+        // Store instance to "storyRoom" depending on the room the player entered
         switch (currentRoom){
             case "DINING ROOM":
                 if (instancesStoryRoom[0] == null){
@@ -238,6 +241,7 @@ public class Player implements PlayerResourceBundle {
             }
         }
 
+        // Execute the class for the room
         storyRoom.enter(scanner);
         action = storyRoom.getNextAction();
 
