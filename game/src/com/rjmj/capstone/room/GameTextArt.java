@@ -18,12 +18,12 @@ public class GameTextArt implements StoryRoomResourceBundle {
     private MovementEngine movementEngine = new MovementEngine();
 
     public void winningArtDisplay() {
-        System.out.println(ANSI_GREEN + "_______________________________________________________\n" +
-                "|  You have now won the game!!!!                      |\n" +
-                "|  Thank you for playing!                             |\n" +
-                "|                                                     |\n" +
-                "|        https://github.com/Capstone-RJMJ/capstone    |\n" +
-                "|_____________________________________________________|\n");
+        System.out.println(ANSI_GREEN + "__________________________________________________________\n" +
+                "|  You have now won the game!!!!                           |\n" +
+                "|  Thank you for playing!                                  |\n" +
+                "|                                                          |\n" +
+                "| https://github.com/cbaloo/TLGCapstone-COVID-Learning     |\n" +
+                "|__________________________________________________________|\n");
 
         System.exit(1);
     }
@@ -72,6 +72,9 @@ public class GameTextArt implements StoryRoomResourceBundle {
                     "|                                                      |\n" +
                     "|  Developed by Michael Lennerblom, Josh Jensen and    |\n" +
                     "|  RJ Smith. https://github.com/Capstone-RJMJ/capstone |\n" +
+                    "|                                                      |\n" +
+                    "|  Modified by Neill Perry, Chandana Baloo and Hiro    |\n" +
+                    "| https://github.com/cbaloo/TLGCapstone-COVID-Learning |\n" +
                     "|______________________________________________________|\n" + ANSI_RESET);
     }
 
