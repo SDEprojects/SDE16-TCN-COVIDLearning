@@ -37,7 +37,7 @@ public class Nelly implements Character{
 
     @Override
     public String processQuestionAnswer(String questionAnswer) {
-        System.out.println(ANSI_CYAN + "Good Luck!" + ANSI_RESET);
+        System.out.println("\nGood Luck!");
         return getItem();
     }
 

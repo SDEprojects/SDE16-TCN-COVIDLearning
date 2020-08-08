@@ -5,11 +5,15 @@ import com.rjmj.capstone.engines.MovementEngine;
 import com.rjmj.capstone.room.Rooms;
 import com.rjmj.capstone.timer.Countdown;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
-public class Inventory {
+public class Inventory implements PlayerResourceBundle{
+
+    //// For resource bundle ////
+    final String FILE_BASE_NAME = "inventory";
+    ResourceBundle bundle = ResourceBundle.getBundle(PATH + FILE_BASE_NAME, Locale.US, rbc);
+    ////////////////////////////
+
     private Jay jay = new Jay();
     private John john = new John();
     private Tom tom = new Tom();
@@ -33,10 +37,8 @@ public class Inventory {
                     if (isAnswerCorrect) {
                         if (!inventory.getPlyrInv().contains(tom.getItem())) {
                             inventory.setPlyrInv(tom.getItem());
-                            item = "Tom has given you " + tom.getItem();
+                            item = ANSI_PURPLE + "Tom has given you " + tom.getItem() + ANSI_RESET;
                         }
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Jay":
@@ -44,10 +46,8 @@ public class Inventory {
                     if (isAnswerCorrect) {
                         if (!inventory.getPlyrInv().contains(jay.getItem())) {
                             inventory.setPlyrInv(jay.getItem());
-                            item = "Jay has given you " + jay.getItem();
+                            item = ANSI_PURPLE + "Jay has given you " + jay.getItem() + ANSI_RESET;
                         }
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "John":
@@ -55,23 +55,22 @@ public class Inventory {
                     if (isAnswerCorrect) {
                         if (!inventory.getPlyrInv().contains(john.getItem())) {
                             inventory.setPlyrInv(john.getItem());
-                            item = "John has given you a " + john.getItem();
+                            item = ANSI_PURPLE + "John has given you a " + john.getItem() + ANSI_RESET;
                             if (inventory.getPlyrInv().contains("Box")){
                                 cd.addTimeBuff();
                             }
                         }
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Peter":
                     isAnswerCorrect = peter.askQuestionCollectAndProcessResponse();
                     if (isAnswerCorrect) {
-                        item = "\nPeter has granted you access to the Library " +
-                                "and there is a secret CAVE behind the bookshelves!!!\n" +
-                                "and a Lab behind another set of books.";
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory,cd);
+                        try {
+                            item = textPainter(bundle.getString("peter"));
+                        }
+                        catch(Exception e){
+                            somethingWentWrong(e);
+                        }
                     }
                     break;
                 case "Zach":
@@ -81,8 +80,6 @@ public class Inventory {
                             inventory.setPlyrInv(zach.getItem());
                             item = Recipe.recipeArt();
                         }
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory, cd);
                     }
                     break;
                 case "Nelly":
@@ -90,15 +87,17 @@ public class Inventory {
                     if (item.equals(nelly.getItem())) {
                         if (!inventory.getPlyrInv().contains(item)) {
                             inventory.setPlyrInv(item);
+                            item = ANSI_PURPLE + "Nelly has given you a " + nelly.getItem() + ANSI_RESET;
                         }
-//                    } else {
-//                        talkToCharacter(room, currentRoom, inventory,cd);
+                        else{
+                            item = "";
+                        }
                     }
                     break;
             }
         }
         else {
-            System.out.println("No one is around, you say hello to yourself.\n");
+            readStoryLinesOutOfFile("noOne", 0);
     }
         return item;//return the item i guess
     }
@@ -109,5 +108,25 @@ public class Inventory {
 
     public void setPlyrInv(String item) {
         plyrInv.add(item);
+    }
+
+    /** For accessing and displaying stories in Resource Bundle file */
+    public void readStoryLinesOutOfFile(String key, int SLEEP_DURATION_MS) {
+        String msg = null;
+        for (int i = 0; i < MAX_ITERATION_DISPLAY_STORIES; i++) {
+            try {
+                msg = textPainter(bundle.getString(key + "[" + i + "]"));
+                displayStoryLineByLine(msg, SLEEP_DURATION_MS);
+            }
+            catch (MissingResourceException e) {
+                if (i == 0){
+                    System.out.println("Could not find the key : " + key);
+                }
+                break;
+            }
+            catch (Exception e){
+                somethingWentWrong(e);
+            }
+        }
     }
 }

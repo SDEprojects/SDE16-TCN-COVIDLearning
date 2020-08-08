@@ -16,7 +16,6 @@ public class StoryKitchen implements StoryRoom {
     private String nextAction;
     private boolean storyDone = false;
 
-
     @Override
     public void enter(Scanner scanner) {
         this.scanner = scanner;
@@ -24,9 +23,6 @@ public class StoryKitchen implements StoryRoom {
         if (!storyDone){
             Story();
             storyDone = true;
-        }
-        else{
-            readStoryLinesOutOfFile("showAlways", 0);
         }
         freeAns();
     }

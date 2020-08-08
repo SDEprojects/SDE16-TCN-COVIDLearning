@@ -1,5 +1,6 @@
 package com.rjmj.capstone.room;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StoryDefault implements StoryRoom{
@@ -31,4 +32,5 @@ public class StoryDefault implements StoryRoom{
     public String getNextAction() {
         return nextAction;
     }
+
 }

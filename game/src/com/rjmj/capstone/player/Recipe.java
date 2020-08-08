@@ -82,8 +82,8 @@ public class Recipe implements PlayerResourceBundle {
         String color1 = arr.get(0);
         String color2 = arr.get(1);
         String color3 = arr.get(2);
-        return ("Zach has given you the recipe to mix the vaccine!\n" +
-                "   Mix the ingredients in the order listed\n" +
+        return (ANSI_PURPLE + "Zach has given you the recipe to mix the vaccine!\n" +
+                "   Mix the ingredients in the order listed\n" + ANSI_RESET +
                 "         __________  \n" +
                 "        ()_________)\n" +
                 "          \\ ~" + color1 + "~ \\\n" +

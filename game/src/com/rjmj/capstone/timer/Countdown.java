@@ -46,7 +46,7 @@ public class Countdown implements TimerResourceBundle {
     }
     
     public String displayTimeInsideArt() {
-        return "Time remaining: " + convertTimeLeftToMmSs(getTimeLeft());
+        return convertTimeLeftToMmSs(getTimeLeft());
     }
 
     public String convertTimeLeftToMmSs(long timeLeft) {

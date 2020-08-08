@@ -82,41 +82,6 @@ public class Rooms implements StoryRoomResourceBundle {
                     "picture", GameTextArt.bathroomDisplay()))
     );
 
-//    public String lookAround(String currentRoom, Inventory inventory) {
-//        MovementEngine movementEngine = new MovementEngine();
-//        movementEngine.clearScreen();
-//        Map<String,String> rm = ROOMS.get(currentRoom);
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("\nAs you look around the " + currentRoom + ":\n");
-//        Set<String> keys = rm.keySet();
-//        String[] keyArr = keys.toArray(new String[keys.size()]);
-//        for(String key : keyArr) {
-//            if(!inventory.getPlyrInv().contains(rm.get(key))) {
-//                if (rm.get("item") != null && "item".equals(key)) {
-//                    String item = rm.get("item");
-//                    sb.append("  you see a " + item + "\n");
-//                }
-//                if (rm.get("character") != null && "character".equals(key)) {
-//                    String character = rm.get("character");
-//                    sb.append("  " + character + " is in the room\n");
-//                }
-//                if (rm.get("left") != null && "left".equals(key)) {
-//                    sb.append("  a door to the " + rm.get("left") + " is to the LEFT\n");
-//                }
-//                if (rm.get("right") != null && "right".equals(key)) {
-//                    sb.append("  a door to the " + rm.get("right") + " is to the RIGHT\n");
-//                }
-//                if (rm.get("up") != null && "up".equals(key)) {
-//                    sb.append("  a door to the " + rm.get("up") + " is UP from the " + currentRoom + "\n");
-//                }
-//                if (rm.get("down") != null && "down".equals(key)) {
-//                    sb.append("  a door to the " + rm.get("down") + " is DOWN from the " + currentRoom + "\n");
-//                }
-//            }
-//        }
-//        String result = sb.toString();
-//        return result;
-//    }
     public String lookAround(String currentRoom, Inventory inventory) {
         MovementEngine movementEngine = new MovementEngine();
         movementEngine.clearScreen();

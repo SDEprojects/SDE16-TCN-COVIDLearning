@@ -2,6 +2,7 @@ package com.rjmj.capstone.engines;
 
 import com.rjmj.capstone.engine.UserInput;
 import com.rjmj.capstone.player.Inventory;
+import com.rjmj.capstone.player.PlayerResourceBundle;
 import com.rjmj.capstone.room.Rooms;
 import com.rjmj.capstone.timer.Countdown;
 
@@ -9,7 +10,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
-public class MovementEngine {
+public class MovementEngine implements PlayerResourceBundle {
     private String currentRoom = "DINING ROOM";
     private Rooms room = new Rooms();
 
@@ -60,7 +61,14 @@ public class MovementEngine {
         Map<String,String> rm = getRoom().getROOMS().get(getCurrentRoom());
         if(rm.get("room").equals("Bedroom") && userChoice.equals("left")){
             result = inventory.talkToCharacter(getRoom(),"LIBRARY",inventory,cd);// force talking to Peter when going into Library
-            setCurrentRoom(rm.get(userChoice).toUpperCase());
+            if (result.equals("")){
+                System.out.println(ANSI_PURPLE + "Peter sent you back to the BEDROOM." + ANSI_RESET);
+                setCurrentRoom("BEDROOM");
+            }
+            else {
+                System.out.println(result);
+                setCurrentRoom(rm.get(userChoice).toUpperCase());
+            }
         }
         else if(rm.containsKey(userChoice)) {
             setCurrentRoom(rm.get(userChoice).toUpperCase());
