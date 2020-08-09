@@ -76,11 +76,11 @@ public class Player implements PlayerResourceBundle {
     // enterName() will prompt the user to  enter their desired name.
     public void collectPlayerName() {
         Scanner userInput = new Scanner(System.in);
-        System.out.println(ANSI_PURPLE + "\nPlease enter your name: " + ANSI_RESET);
+        readStoryLinesOutOfFile("enterName", 0);
         this.playerName = userInput.nextLine();
         movementEngine.clearScreen();
         System.out.println(ANSI_PURPLE + "Username has been set to: " + ANSI_RESET + ANSI_RED + getPlayerName() + ANSI_RESET);
-        System.out.println(">>Press \"enter\" or \"return\" to continue.");
+        readStoryLinesOutOfFile("pressEnter", 0);
         userInput.nextLine();
         movementEngine.clearScreen();
         cd.startTimer();
