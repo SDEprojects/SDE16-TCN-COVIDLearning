@@ -52,10 +52,11 @@ public class Player implements PlayerResourceBundle {
                 parser = new Parser();
                 collectPlayerName();
                 backToMenu();
+                System.exit(0);
                 break;
             case "INTRO":
                 gameTextArt.introText();
-                parser = new Parser();
+                //parser = new Parser();
                 play();
                 break;
             case "TUTORIAL":
@@ -149,7 +150,7 @@ public class Player implements PlayerResourceBundle {
             }
         }
 
-        backToMenu();
+        //backToMenu();
     }
     private void showHelp(){
         Scanner userInput = new Scanner(System.in);
@@ -203,82 +204,85 @@ public class Player implements PlayerResourceBundle {
 
         Scanner userInput = new Scanner(System.in);
 
-        String currentRoom = movementEngine.getCurrentRoom();
-        StoryRoom storyRoom = null;
-        String action = null;
+        do {
+            String currentRoom = movementEngine.getCurrentRoom();
+            StoryRoom storyRoom = null;
+            String action = null;
 
-        // Show a message for mixture
-        if ((itemsCheck()) && currentRoom.equals(oldCurrentRoom)){
-            readStoryLinesOutOfFile("enoughItemsToMix", 0);
-        }
-
-        // Store instance to "storyRoom" depending on the room the player entered
-        switch (currentRoom){
-            case "DINING ROOM":
-                if (instancesStoryRoom[0] == null){
-                    storyRoom = new StoryDiningRoom();
-                    instancesStoryRoom[0] = storyRoom;
-                }
-                else{
-                    storyRoom = instancesStoryRoom[0];
-                    flagAccessingSecondTime[0] = true;
-                }
-                break;
-
-            case "HALL":
-                if (instancesStoryRoom[1] == null){
-                    storyRoom = new StoryHall();
-                    instancesStoryRoom[1] = storyRoom;
-                }
-                else{
-                    storyRoom = instancesStoryRoom[1];
-                    flagAccessingSecondTime[1] = true;
-                }
-                break;
-
-            case "KITCHEN":
-                if (instancesStoryRoom[2] == null){
-                    storyRoom = new StoryKitchen();
-                    instancesStoryRoom[2] = storyRoom;
-                }
-                else{
-                    storyRoom = instancesStoryRoom[2];
-                    flagAccessingSecondTime[2] = true;
-                }
-                break;
-
-            default:
-                storyRoom = new StoryDefault();
-
-        }
-
-        // Current room location, Possession, time only show when a player moves from different room
-        if ((currentRoom.equals("DINING ROOM"))||(currentRoom.equals("HALL"))||(currentRoom.equals("KITCHEN"))){
-            if (!currentRoom.equals(oldCurrentRoom)
-            && ((currentRoom.equals("DINING ROOM"))&&(flagAccessingSecondTime[0])
-            || (currentRoom.equals("HALL"))&&(flagAccessingSecondTime[1])
-            || (currentRoom.equals("KITCHEN"))&&(flagAccessingSecondTime[2]))){
-                storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+            // Show a message for mixture
+            if ((itemsCheck()) && currentRoom.equals(oldCurrentRoom)) {
+                readStoryLinesOutOfFile("enoughItemsToMix", 0);
             }
-        }
-        else {
-            if (!currentRoom.equals(oldCurrentRoom)) {
-                storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+
+            // Store instance to "storyRoom" depending on the room the player entered
+            switch (currentRoom) {
+                case "DINING ROOM":
+                    if (instancesStoryRoom[0] == null) {
+                        storyRoom = new StoryDiningRoom();
+                        instancesStoryRoom[0] = storyRoom;
+                    } else {
+                        storyRoom = instancesStoryRoom[0];
+                        flagAccessingSecondTime[0] = true;
+                    }
+                    break;
+
+                case "HALL":
+                    if (instancesStoryRoom[1] == null) {
+                        storyRoom = new StoryHall();
+                        instancesStoryRoom[1] = storyRoom;
+                    } else {
+                        storyRoom = instancesStoryRoom[1];
+                        flagAccessingSecondTime[1] = true;
+                    }
+                    break;
+
+                case "KITCHEN":
+                    if (instancesStoryRoom[2] == null) {
+                        storyRoom = new StoryKitchen();
+                        instancesStoryRoom[2] = storyRoom;
+                    } else {
+                        storyRoom = instancesStoryRoom[2];
+                        flagAccessingSecondTime[2] = true;
+                    }
+                    break;
+
+                default:
+                    storyRoom = new StoryDefault();
+
             }
-        }
 
-        // Execute the class for the room
-        storyRoom.enter(userInput);
-        action = storyRoom.getNextAction();
+            // Current room location, Possession, time only show when a player moves from different room
+            if ((currentRoom.equals("DINING ROOM")) || (currentRoom.equals("HALL")) || (currentRoom.equals("KITCHEN"))) {
+                if (!currentRoom.equals(oldCurrentRoom)
+                        && ((currentRoom.equals("DINING ROOM")) && (flagAccessingSecondTime[0])
+                        || (currentRoom.equals("HALL")) && (flagAccessingSecondTime[1])
+                        || (currentRoom.equals("KITCHEN")) && (flagAccessingSecondTime[2]))) {
+                    storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+                }
+            } else {
+                if (!currentRoom.equals(oldCurrentRoom)) {
+                    storyRoom.displayMessageOnlyFirstTimeComingFromDifferentRoom(currentRoom, pi, cd.displayTimeInsideArt());
+                }
+            }
 
-        // Store what room the player was before
-        if (oldCurrentRoom == null){
+            // Execute the class for the room
+            storyRoom.enter(userInput);
+            action = storyRoom.getNextAction();
+
+            // Store what room the player was before
+            if (oldCurrentRoom == null) {
+                oldCurrentRoom = currentRoom;
+            }
             oldCurrentRoom = currentRoom;
-        }
-        oldCurrentRoom = currentRoom;
 
-        // Process the action set by StoryRoom classes
-        parseAvailableActions(collectPlayerActionInput(action));
+            if (action.equalsIgnoreCase("exit")){
+                break;
+            }
+            else {
+                // Process the action set by StoryRoom classes
+                parseAvailableActions(collectPlayerActionInput(action));
+            }
+        }while(true);
     }
 
 
