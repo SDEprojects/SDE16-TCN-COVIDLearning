@@ -101,7 +101,7 @@ public class Player implements PlayerResourceBundle {
         String command = commandArray[0];
         String argument = commandArray.length > 1 ? commandArray[1] : " ";
 
-        if (command.equalsIgnoreCase("EXIT")) { play(); return; }
+        //if (command.equalsIgnoreCase("EXIT")) { play(); return; }
         // MOVE
         if (parser.isMoveSynonym(command))  {
             countInvalidSelectionParser = 0;
